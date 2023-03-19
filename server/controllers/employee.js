@@ -2,7 +2,7 @@ const bcrypt = require("bcrypt");
 const EmployeeService = require("../services/employee");
 const config = require("../config/config").get(process.env.NODE_ENV);
 
-const login = async function(req,res) {
+const signin = async function(req,res) {
     try {
         const {email, password} = req.body;
         if(!email && !password) {
@@ -53,19 +53,19 @@ const verify = async function(req,res) {
     if(token){
         try {
             let decoded = EmployeeService.verifyToken(token);
-            let employee = await EmployeeService.getEmployee({_id: decoded.data._id});
+            let employee = await EmployeeService.getEmployee({token: token});
             res.status(200).send(employee);
         } catch (error) {
             console.log(error);
-            res.status(200).send({status:false, message:error.message, error:error});
+            res.status(500).send({status:false, message:error.message, error:error});
         }
     } else {
-        res.status(200).send({status:false, message:"Authorisation failed."});
+        res.status(401).send({status:false, message:"Authorisation failed."});
     }
 };
 
 module.exports = {
-    login: login,
+    signin: signin,
     create: create,
     verify: verify
 };

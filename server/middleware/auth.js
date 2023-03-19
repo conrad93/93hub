@@ -7,7 +7,7 @@ const verify = async function(req,res,next) {
         try {
             let decoded = EmployeeService.verifyToken(token);
             req.user = decoded.data;
-            next();    
+            next();
         } catch (error) {
             console.log(error);
             res.status(401).send({status:false, message:error.message, error:error});

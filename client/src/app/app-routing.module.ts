@@ -14,6 +14,11 @@ const routes: Routes = [
       import('./modules/employee/employee.module').then((m) => m.EmployeeModule)
   },
   {
+    path: '',
+    redirectTo: '',
+    pathMatch: 'full'
+  },
+  {
     path:'**', 
     component: PageNotFoundComponent
   },

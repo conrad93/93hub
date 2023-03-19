@@ -6,7 +6,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { EmployeeComponent } from './components/employee/employee.component';
 import { EmployeeHeaderComponent } from './components/employee-header/employee-header.component';
 import { EmployeeSignInComponent } from './components/employee-sign-in/employee-sign-in.component';
-import { EmployeeSignUpComponent } from './components/employee-sign-up/employee-sign-up.component';
+import { EmployeeService } from 'src/app/modules/employee/services/employee.service';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -14,12 +15,16 @@ import { EmployeeSignUpComponent } from './components/employee-sign-up/employee-
     DashboardComponent,
     EmployeeComponent,
     EmployeeHeaderComponent,
-    EmployeeSignInComponent,
-    EmployeeSignUpComponent
+    EmployeeSignInComponent
   ],
   imports: [
     CommonModule,
-    EmployeeRoutingModule
+    EmployeeRoutingModule,
+    ReactiveFormsModule
   ]
 })
-export class EmployeeModule { }
+export class EmployeeModule {
+  constructor(private employeeService: EmployeeService) {
+    this.employeeService.verify();
+  }
+}

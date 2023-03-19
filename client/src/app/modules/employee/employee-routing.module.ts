@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { EmployeeGuard } from './guards/employee.guard';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { EmployeeSignInComponent } from './components/employee-sign-in/employee-sign-in.component';
-import { EmployeeSignUpComponent } from './components/employee-sign-up/employee-sign-up.component';
 import { EmployeeComponent } from './components/employee/employee.component';
 
 const routes: Routes = [
@@ -12,15 +12,12 @@ const routes: Routes = [
     children: [
       {
         path: 'dashboard',
-        component: DashboardComponent
+        component: DashboardComponent,
+        canActivate:[EmployeeGuard]
       },
       {
         path: 'sign-in',
         component: EmployeeSignInComponent
-      },
-      {
-        path: 'sign-up',
-        component: EmployeeSignUpComponent
       },
       {
         path: '',

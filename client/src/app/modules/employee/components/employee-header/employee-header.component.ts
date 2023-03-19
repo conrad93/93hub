@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { initDropdowns } from 'flowbite';
+import { EmployeeService } from 'src/app/modules/employee/services/employee.service';
 
 @Component({
   selector: 'app-employee-header',
@@ -8,14 +9,14 @@ import { initDropdowns } from 'flowbite';
 })
 export class EmployeeHeaderComponent implements OnInit {
 
-  constructor(){}
+  constructor(private employeeService: EmployeeService){}
 
   ngOnInit(): void {
     initDropdowns();
   }
 
   signOut(){
-    
+    this.employeeService.signOut();
   }
 
 }

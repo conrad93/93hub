@@ -30,6 +30,13 @@ export class EmployeeService {
     return this.http.post(this.apiUrl + '/api/employee/sign-in', data, headers);
   }
 
+  setSignedInEmployee(data:Employee | null){
+    this.signedInEmployee.next(data);
+    if(data?.token){
+      this.setTokenToLocalStorage(data.token);
+    }
+  }
+
   verify(){
     this.loaderService.show();
     let token = this.getTokenFromLocalStorage();
@@ -39,6 +46,7 @@ export class EmployeeService {
         next: (res: any) => {
           if(res["status"]){
             this.signedInEmployee.next(res["data"]);
+            this.router.navigate(['/employee']);
           }
           console.log(res);
         },

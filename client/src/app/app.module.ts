@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { LoaderComponent } from './components/loader/loader.component';
+import { ToastComponent } from './components/toast/toast.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     PageNotFoundComponent,
-    LoaderComponent
+    LoaderComponent,
+    ToastComponent
   ],
   imports: [
     BrowserModule,

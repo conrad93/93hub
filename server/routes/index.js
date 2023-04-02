@@ -1,12 +1,14 @@
 var express = require('express');
 var router = express.Router();
-var employeeRoute = require("./employee");
+var EmployeeRoute = require("./employee");
+var BaseRoute = require("./base");
 
-router.use("/api/employee",employeeRoute);
+router.use("/api/employee",EmployeeRoute);
+router.use("/api/base",BaseRoute);
 
 router.use("*",(req,res) => {
-    console.log("Error in route.");
-    res.status(404).send('No route found!');
+    console.log("404: Route not found");
+    res.status(404).send('404: Route not found');
 });
 
 module.exports = router;

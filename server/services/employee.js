@@ -1,5 +1,4 @@
 const Employee = require("../models/employee");
-const jwt = require("jsonwebtoken");
 
 const create = async function(data) {
     try {
@@ -32,18 +31,8 @@ const updateById = async function(id,data) {
     }
 }
 
-const generateToken = function(data, expiresIn){
-    return jwt.sign({data: data}, process.env.JWT_SECRET, {expiresIn: expiresIn});
-}
-
-const verifyToken = function(data){
-    return jwt.verify(data, process.env.JWT_SECRET);
-}
-
 module.exports = {
     create: create,
     getEmployee: getEmployee,
-    updateById: updateById,
-    generateToken: generateToken,
-    verifyToken: verifyToken
+    updateById: updateById
 };

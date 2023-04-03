@@ -1,5 +1,6 @@
 const bcrypt = require("bcrypt");
 const EmployeeService = require("../services/employee");
+const CommonService = require("../services/common");
 const config = require("../config/config").get(process.env.NODE_ENV);
 
 const signin = async function(req,res) {
@@ -18,7 +19,7 @@ const signin = async function(req,res) {
                     name: employee.data.name,
                     status: employee.data.status
                 };
-                let token = EmployeeService.generateToken(data, config.JWT_expiresIn);
+                let token = CommonService.generateToken(data, config.JWT_expiresIn);
                 EmployeeService.updateById(employee.data._id, {token: token});
                 data["token"] = token;
                 res.status(200).send({status:true, message:"Success!", data: data});
@@ -52,7 +53,7 @@ const verify = async function(req,res) {
     let token = req.headers.e_token;
     if(token){
         try {
-            let decoded = EmployeeService.verifyToken(token);
+            let decoded = CommonService.verifyToken(token);
             let employee = await EmployeeService.getEmployee({token: token});
             res.status(200).send(employee);
         } catch (error) {

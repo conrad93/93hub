@@ -1,11 +1,10 @@
-const jwt = require("jsonwebtoken");
-const EmployeeService = require("../services/employee");
+const CommonService = require("../services/common");
 
 const verify = async function(req,res,next) {
     let token = req.headers.e_token;
     if(token){
         try {
-            let decoded = EmployeeService.verifyToken(token);
+            let decoded = CommonService.verifyToken(token);
             req.user = decoded.data;
             next();
         } catch (error) {

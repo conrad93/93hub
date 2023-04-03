@@ -3,14 +3,14 @@ const mongoose = require('mongoose');
 const list = async function(data) {
     try {
         const model = mongoose.models[data.model] || require("../models/" + data.model);
-        let response = model
-        .find(data.filter, data.feilds)
-        .limit(data.limit || 100)
+        let response = await model
+        .find(data.body.filter, data.body.feilds)
+        .limit(data.body.limit || 100)
         .skip(
-            ((data.limit || 100) * ((data.page || 0) - 1))
+            (data.body.limit || 100) * ((data.body.page || 0) - 1)
         )
         .sort({
-            [data.sort_by || "createdAt"]: data.sort_type ? (data.sort_type === "ASC" ? 1 : -1) : -1
+            [data.body.sort_by || "createdAt"]: data.body.sort_type ? (data.body.sort_type === "ASC" ? 1 : -1) : -1
         });
         return {status: true, message:"Success!", data: response};
     } catch (error) {

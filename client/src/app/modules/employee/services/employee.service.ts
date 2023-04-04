@@ -48,7 +48,6 @@ export class EmployeeService {
             this.signedInEmployee.next(res["data"]);
             this.router.navigate(['/employee']);
           }
-          console.log(res);
         },
         error: (err) => {
           if(err["error"] && !err["error"]["status"]){

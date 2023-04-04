@@ -4,6 +4,10 @@ import { EmployeeGuard } from './guards/employee.guard';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { EmployeeSignInComponent } from './components/employee-sign-in/employee-sign-in.component';
 import { EmployeeComponent } from './components/employee/employee.component';
+import { EmployeeListComponent } from './components/employee-list/employee-list.component';
+import { EmployeeFormComponent } from './components/employee-form/employee-form.component';
+import { CustomerListComponent } from './components/customer-list/customer-list.component';
+import { CustomerFormComponent } from './components/customer-form/customer-form.component';
 
 const routes: Routes = [
   {
@@ -18,6 +22,26 @@ const routes: Routes = [
       {
         path: 'sign-in',
         component: EmployeeSignInComponent
+      },
+      {
+        path: 'employee-list',
+        component: EmployeeListComponent,
+        canActivate:[EmployeeGuard]
+      },
+      {
+        path: 'employee-form',
+        component: EmployeeFormComponent,
+        canActivate:[EmployeeGuard]
+      },
+      {
+        path: 'customer-list',
+        component: CustomerListComponent,
+        canActivate:[EmployeeGuard]
+      },
+      {
+        path: 'customer-form',
+        component: CustomerFormComponent,
+        canActivate:[EmployeeGuard]
       },
       {
         path: '',

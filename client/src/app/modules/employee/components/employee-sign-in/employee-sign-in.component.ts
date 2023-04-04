@@ -54,7 +54,6 @@ export class EmployeeSignInComponent implements OnInit {
               timeout: 3000
             });
           }
-          console.log(res);
         },
         error: (err) => {
           if(err["error"] && !err["error"]["status"]){

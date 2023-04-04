@@ -16,7 +16,6 @@ export class EmployeeGuard implements CanActivate {
     return this.employeeService.signedInEmployee.pipe(
       take(1),
       map(data => {
-        console.log(data);
         if (data) {
           return true;
         } else {

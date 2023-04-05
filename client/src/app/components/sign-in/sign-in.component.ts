@@ -1,21 +1,22 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { EmployeeService } from 'src/app/modules/employee/services/employee.service';
+import { EmployeeService } from 'src/app/services/employee.service';
 import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
-  selector: 'app-employee-sign-in',
-  templateUrl: './employee-sign-in.component.html',
-  styleUrls: ['./employee-sign-in.component.css']
+  selector: 'app-sign-in',
+  templateUrl: './sign-in.component.html',
+  styleUrls: ['./sign-in.component.css']
 })
-export class EmployeeSignInComponent implements OnInit {
-
-  signInForm: FormGroup;
+export class SignInComponent {
+  
+  isEmployee: boolean = false;
+  employeeForm: FormGroup;
   isLoading: boolean = false;
 
-  constructor(private employeeService: EmployeeService, private toastService: ToastService, private fb: FormBuilder, private router: Router) {
-    this.signInForm = this.fb.group({
+  constructor(private employeeService: EmployeeService, private toastService: ToastService, private fb: FormBuilder, private router: Router){
+    this.employeeForm = this.fb.group({
       email: ['', [
         Validators.required,
         Validators.email
@@ -28,14 +29,10 @@ export class EmployeeSignInComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-    
-  }
-
-  onSubmit(){
+  onEmployeeSubmit(){
     this.isLoading = true;
-    let data = this.signInForm.value;
-    if(this.signInForm.valid){
+    let data = this.employeeForm.value;
+    if(this.employeeForm.valid){
       this.employeeService.signin(data).subscribe({
         next: (res: any) => {
           if(res["status"]){
@@ -45,7 +42,7 @@ export class EmployeeSignInComponent implements OnInit {
               class:"border-green-800 text-green-800 dark:text-green-400", 
               timeout: 3000
             });
-            this.signInForm.reset();
+            this.employeeForm.reset();
             this.router.navigate(['/employee']);
           } else {
             this.toastService.show({

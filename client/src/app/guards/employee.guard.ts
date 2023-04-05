@@ -19,7 +19,7 @@ export class EmployeeGuard implements CanActivate {
         if (data) {
           return true;
         } else {
-          return this.router.createUrlTree(['/employee/sign-in']); 
+          return this.router.createUrlTree(['/sign-in']); 
         }
       })
     );

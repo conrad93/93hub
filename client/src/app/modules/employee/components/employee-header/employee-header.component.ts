@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { initDropdowns } from 'flowbite';
 import { Employee } from 'src/app/models/employee.model';
-import { EmployeeService } from 'src/app/modules/employee/services/employee.service';
+import { EmployeeService } from 'src/app/services/employee.service';
 
 @Component({
   selector: 'app-employee-header',

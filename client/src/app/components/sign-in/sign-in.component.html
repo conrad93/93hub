@@ -5,21 +5,31 @@
     <div class="h-screen flex items-center justify-center overflow-auto col-span-7">
         
         <div class="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
-            <form class="space-y-6" [formGroup]="signInForm" (ngSubmit)="onSubmit()">
-                <div class="flex items-center justify-center">
-                    <h5 class="text-xl font-medium text-gray-900 dark:text-white">93HUB</h5>
-                </div>
+            <div class="flex items-center justify-center">
+                <h5 class="text-xl font-medium text-gray-900 dark:text-white">93HUB</h5>
+            </div>
+            <div class="flex items-center justify-center p-2">
+                <ul class="text-sm font-medium text-center text-gray-500 bg-gray-100 rounded-full p-1 sm:flex dark:text-gray-400 dark:bg-gray-700">
+                    <li>
+                        <a (click)="isEmployee = false" class="inline-block p-2 text-gray-900 focus:outline-none {{!isEmployee ? 'bg-white shadow rounded-full dark:bg-gray-800' : ''}} dark:text-white" role="button">Users</a>
+                    </li>
+                    <li>
+                        <a (click)="isEmployee = true" class="inline-block p-2 text-gray-900 focus:outline-none {{isEmployee ? 'bg-white shadow rounded-full dark:bg-gray-800' : ''}} dark:text-white" role="button">Employees</a>
+                    </li>
+                </ul>
+            </div>
+            <form *ngIf="isEmployee" class="space-y-6" [formGroup]="employeeForm" (ngSubmit)="onEmployeeSubmit()">
                 <div>
                     <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
                     <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="" formControlName="email">
-                    <p *ngIf="signInForm.controls['email'].touched && !signInForm.controls['email'].valid" class="mt-2 text-sm text-red-600 dark:text-red-500">Invalid Email.</p>
+                    <p *ngIf="employeeForm.controls['email'].touched && !employeeForm.controls['email'].valid" class="mt-2 text-sm text-red-600 dark:text-red-500">Invalid Email.</p>
                 </div>
                 <div>
                     <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
                     <input type="password" name="password" id="password" placeholder="" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" formControlName="password">
-                    <p *ngIf="signInForm.controls['password'].touched && !signInForm.controls['password'].valid" class="mt-2 text-sm text-red-600 dark:text-red-500">Required minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character.</p>
+                    <p *ngIf="employeeForm.controls['password'].touched && !employeeForm.controls['password'].valid" class="mt-2 text-sm text-red-600 dark:text-red-500">Required minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character.</p>
                 </div>
-                <button type="submit" [disabled]="!signInForm.valid || isLoading" class="w-full text-white {{signInForm.valid ? 'bg-blue-700 hover:bg-blue-800' : 'bg-blue-400 dark:bg-blue-500 cursor-not-allowed' }} focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                <button type="submit" [disabled]="!employeeForm.valid || isLoading" class="w-full text-white {{employeeForm.valid ? 'bg-blue-700 hover:bg-blue-800' : 'bg-blue-400 dark:bg-blue-500 cursor-not-allowed' }} focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                     <ng-container *ngIf="isLoading; else notLoading;">
                         <svg aria-hidden="true" role="status" class="inline w-4 h-4 mr-3 text-white animate-spin" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="#E5E7EB"/>

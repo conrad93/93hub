@@ -10,6 +10,9 @@ import { LoaderComponent } from './components/loader/loader.component';
 import { ToastComponent } from './components/toast/toast.component';
 import { MonacoEditorComponentComponent } from './components/monaco-editor-component/monaco-editor-component.component';
 import { CodeEditorModule } from '@ngstack/code-editor';
+import { SignInComponent } from './components/sign-in/sign-in.component';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,12 +21,15 @@ import { CodeEditorModule } from '@ngstack/code-editor';
     PageNotFoundComponent,
     LoaderComponent,
     ToastComponent,
-    MonacoEditorComponentComponent
+    MonacoEditorComponentComponent,
+    SignInComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule,
     CodeEditorModule.forRoot({
       baseUrl: 'assets/monaco',
       typingsWorkerUrl: 'assets/workers/typings-worker.js'

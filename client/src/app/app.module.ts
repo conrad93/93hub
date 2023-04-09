@@ -12,7 +12,7 @@ import { MonacoEditorComponentComponent } from './components/monaco-editor-compo
 import { CodeEditorModule } from '@ngstack/code-editor';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -30,6 +30,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    FormsModule,
     CodeEditorModule.forRoot({
       baseUrl: 'assets/monaco',
       typingsWorkerUrl: 'assets/workers/typings-worker.js'

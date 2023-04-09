@@ -46,8 +46,22 @@ const update = async function(req,res) {
     }
 }
 
+const getById = async function(req,res) {
+    try {
+        let id = req.params.id;
+        let model = req.params.model;
+        let feilds = req.body.fields || {};
+        let response = await BaseService.getById(id, model, feilds);
+        res.status(200).send(response);
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({status:false, message:error.message, error:error});
+    }
+}
+
 module.exports = {
     list: list,
     create: create,
-    update: update
+    update: update,
+    getById: getById
 };

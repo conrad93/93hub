@@ -30,6 +30,15 @@ export class EmployeeService {
     return this.http.post(this.apiUrl + '/api/employee/sign-in', data, headers);
   }
 
+  create(data:any, header:any){
+    let options = {
+      "Content-Type": "application/json",
+      ...header
+    };
+    let headers = {headers: new HttpHeaders(options)};
+    return this.http.post(this.apiUrl + '/api/employee/create', data, headers);
+  }
+
   setSignedInEmployee(data:Employee | null){
     this.signedInEmployee.next(data);
     if(data?.token){

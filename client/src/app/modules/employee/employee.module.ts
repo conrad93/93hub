@@ -6,7 +6,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { EmployeeComponent } from './components/employee/employee.component';
 import { EmployeeHeaderComponent } from './components/employee-header/employee-header.component';
 import { EmployeeService } from 'src/app/services/employee.service';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EmployeeListComponent } from './components/employee-list/employee-list.component';
 import { EmployeeFormComponent } from './components/employee-form/employee-form.component';
 import { CustomerFormComponent } from './components/customer-form/customer-form.component';
@@ -25,8 +25,9 @@ import { CustomerListComponent } from './components/customer-list/customer-list.
   ],
   imports: [
     CommonModule,
-    EmployeeRoutingModule,
-    ReactiveFormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    EmployeeRoutingModule
   ]
 })
 export class EmployeeModule {

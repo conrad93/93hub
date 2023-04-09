@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BaseService } from 'src/app/services/base.service';
 import { EmployeeService } from '../../../../services/employee.service';
 import { Employee } from 'src/app/models/employee.model';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-employee-list',
@@ -10,7 +11,9 @@ import { Employee } from 'src/app/models/employee.model';
 })
 export class EmployeeListComponent implements OnInit{
 
-  limit: number = 10;
+  isLoading:boolean = false;
+  limit: string = "10";
+  count: number = 0;
   page: number = 1;
   sort_by: string = "createdAt";
   sort_type: string = "DESC";
@@ -27,7 +30,7 @@ export class EmployeeListComponent implements OnInit{
   employee: Employee | null = null;
   data: any = [];
 
-  constructor(private baseService: BaseService, private employeeService: EmployeeService){
+  constructor(private baseService: BaseService, private employeeService: EmployeeService, private router: Router, private route: ActivatedRoute){
     this.employeeService.signedInEmployee.subscribe({
       next: v => this.employee = v,
       error: e => console.error(e),
@@ -40,15 +43,15 @@ export class EmployeeListComponent implements OnInit{
   }
 
   applyFilter(){
+    this.isLoading = true;
     let filter:any = {};
-    this.search.name = "";
     Object.keys(this.search).forEach(key => {
       if(this.search[key]){
         filter[key] = this.search[key];
       }        
     });
     let req = {
-      limit: this.limit,
+      limit: parseInt(this.limit),
       page: this.page,
       sort_by: this.sort_by,
       sort_type: this.sort_type,
@@ -59,11 +62,56 @@ export class EmployeeListComponent implements OnInit{
       next: (v: any) => {
         if(v["status"]){
           this.data = [...v["data"]];
+          this.count = v["count"] ? v["count"] : 0;
         }
+        this.isLoading = false;
       },
-      error: e => console.error(e),
+      error: e => {
+        console.error(e);
+        this.isLoading = false;
+      },
       complete: () => console.info("complete"),
     });
+  }
+
+  showStart(){
+    return (parseInt(this.limit) * (this.page - 1)) + 1;
+  }
+
+  showEnd(){
+    return parseInt(this.limit) > this.count ? this.count : ( (parseInt(this.limit) * this.page) > this.count ? this.count : (parseInt(this.limit) * this.page) );
+  }
+
+  isLastPage(){
+    return Math.ceil(this.count / parseInt(this.limit)) <= this.page ? 'bg-gray-200 dark:bg-gray-700 custom-disabled' : 'cursor-pointer bg-white dark:bg-gray-800 hover:bg-gray-100 hover:text-gray-700 dark:hover:bg-gray-700 dark:hover:text-white';
+  }
+
+  movePrev(){
+    this.page = this.page - 1;
+    this.applyFilter();
+  }
+
+  moveNext(){
+    this.page = this.page + 1;
+    this.applyFilter();
+  }
+
+  addNew(){
+    this.router.navigate(["/employee/employee-form"], {relativeTo: this.route});
+  }
+
+  edit(id: string){
+    this.router.navigate(["/employee/employee-form"], {
+      relativeTo: this.route,
+      queryParams: {id: id}
+    });
+  }
+
+  reset(){
+    this.search.name = "";
+    this.search.email = "";
+    this.search.status = "";
+    this.applyFilter();
   }
 
 }

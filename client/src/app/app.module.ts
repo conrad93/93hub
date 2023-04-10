@@ -13,6 +13,7 @@ import { CodeEditorModule } from '@ngstack/code-editor';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { StatusPipe } from './pipes/status.pipe';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ToastComponent,
     MonacoEditorComponentComponent,
     SignInComponent,
-    SignUpComponent
+    SignUpComponent,
+    StatusPipe
   ],
   imports: [
     BrowserModule,

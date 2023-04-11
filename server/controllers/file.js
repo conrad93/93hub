@@ -41,7 +41,22 @@ const form = async function(req,res) {
                     response = await BaseService.create(data);
                 }
             }
-            return res.status(200).send(response);
+            res.status(200).send(response);
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({status:false, message:error.message, error:error});
+    }
+}
+
+const show = async function(req,res) {
+    try {
+        let file = req?.params?.[0];
+        FileService.show(file, function(response){
+            res.writeHead(response.status , {
+                "Content-Type": response.contentType
+            });
+            res.end(response.data);
         });
     } catch (error) {
         console.log(error);
@@ -50,5 +65,6 @@ const form = async function(req,res) {
 }
 
 module.exports = {
-    form: form
+    form: form,
+    show: show
 };

@@ -21,6 +21,48 @@ const formUpload = async function(file, name, formConfig) {
     }
 }
 
+const show = async function(file, callback){
+    try {
+        let folderPath = path.join(__dirname, "..", "..", "..", "uploads", file);
+        if(fs.existsSync(folderPath)){
+            fs.readFile(folderPath, function(err, data){
+                if(err){
+                    console.error(err);
+                    return callback({status: 500, contentType: "text/plain", data: "Error"});
+                }
+                let contentType = getMimeType(folderPath);
+                return callback({status: 200, contentType: contentType, data: data});
+            })
+        } else {
+            return callback({status: 404, contentType: "text/plain", data: "404 Not Found"});
+        }
+    } catch (error) {
+        console.error(error);
+        return callback({status: 500, contentType: "text/plain", data: "Error"});
+    }
+}
+
+const getMimeType = function(filePath){
+    const extension = path.extname(filePath).toLowerCase();
+    const mimeTypes = {
+        '.html': 'text/html',
+        '.css': 'text/css',
+        '.js': 'text/javascript',
+        '.json': 'application/json',
+        '.png': 'image/png',
+        '.jpg': 'image/jpeg',
+        '.jpeg': 'image/jpeg',
+        '.gif': 'image/gif',
+        '.csv': 'text/csv',
+        '.pdf': 'application/pdf',
+        '.svg': 'image/svg+xml',
+        '.txt': 'text/plain'
+    };
+    return mimeTypes[extension] || 'application/octet-stream';
+}
+
 module.exports = {
-    formUpload: formUpload
+    formUpload: formUpload,
+    getMimeType: getMimeType,
+    show: show
 };

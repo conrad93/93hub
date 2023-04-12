@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { EmployeeRoutingModule } from './employee-routing.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EmployeeService } from 'src/app/services/employee.service';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { EmployeeComponent } from './components/employee/employee.component';
 import { EmployeeHeaderComponent } from './components/employee-header/employee-header.component';
-import { EmployeeService } from 'src/app/services/employee.service';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EmployeeListComponent } from './components/employee-list/employee-list.component';
 import { EmployeeFormComponent } from './components/employee-form/employee-form.component';
 import { CustomerFormComponent } from './components/customer-form/customer-form.component';
@@ -19,7 +18,6 @@ import { CategoryListComponent } from './components/category-list/category-list.
 import { CategoryFormComponent } from './components/category-form/category-form.component';
 import { TemplateFormComponent } from './components/template-form/template-form.component';
 import { TemplateListComponent } from './components/template-list/template-list.component';
-
 
 @NgModule({
   declarations: [

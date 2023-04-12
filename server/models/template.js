@@ -5,6 +5,7 @@ const TemplateSchema = new mongoose.Schema({
     code: {type: String, require: true, unique: true},
     template: {type: String, require: true},
     details: {type: Object, require: true},
+    categoryCode: {type: String},
     status: {type: Number, default: 0}
 }, {timestamps: true});
 

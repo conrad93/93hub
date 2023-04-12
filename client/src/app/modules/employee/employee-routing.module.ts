@@ -6,6 +6,14 @@ import { EmployeeListComponent } from './components/employee-list/employee-list.
 import { EmployeeFormComponent } from './components/employee-form/employee-form.component';
 import { CustomerListComponent } from './components/customer-list/customer-list.component';
 import { CustomerFormComponent } from './components/customer-form/customer-form.component';
+import { CountryListComponent } from './components/country-list/country-list.component';
+import { CountryFormComponent } from './components/country-form/country-form.component';
+import { CityListComponent } from './components/city-list/city-list.component';
+import { CityFormComponent } from './components/city-form/city-form.component';
+import { CategoryListComponent } from './components/category-list/category-list.component';
+import { CategoryFormComponent } from './components/category-form/category-form.component';
+import { TemplateListComponent } from './components/template-list/template-list.component';
+import { TemplateFormComponent } from './components/template-form/template-form.component';
 
 const routes: Routes = [
   {
@@ -31,6 +39,38 @@ const routes: Routes = [
       {
         path: 'customer-form',
         component: CustomerFormComponent,
+      },
+      {
+        path: 'country-list',
+        component: CountryListComponent,
+      },
+      {
+        path: 'country-form',
+        component: CountryFormComponent,
+      },
+      {
+        path: 'city-list',
+        component: CityListComponent,
+      },
+      {
+        path: 'city-form',
+        component: CityFormComponent,
+      },
+      {
+        path: 'category-list',
+        component: CategoryListComponent,
+      },
+      {
+        path: 'category-form',
+        component: CategoryFormComponent,
+      },
+      {
+        path: 'template-list',
+        component: TemplateListComponent,
+      },
+      {
+        path: 'template-form',
+        component: TemplateFormComponent,
       },
       {
         path: '',

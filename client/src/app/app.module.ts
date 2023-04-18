@@ -3,8 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { CodeEditorModule } from '@ngstack/code-editor';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { StatusPipe } from './pipes/status.pipe';
+import { SharedModule } from './modules/shared/shared.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
@@ -24,14 +23,11 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
     MonacoEditorComponentComponent,
     SignInComponent,
     SignUpComponent,
-    StatusPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    FormsModule,
+    SharedModule,
     CodeEditorModule.forRoot({
       baseUrl: 'assets/monaco',
       typingsWorkerUrl: 'assets/workers/typings-worker.js'

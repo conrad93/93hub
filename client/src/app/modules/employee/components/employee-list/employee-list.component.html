@@ -52,10 +52,7 @@
                     <td class="px-6 py-4">
                         {{emp.email}}
                     </td>
-                    <td class="px-6 py-4">
-                        <span [ngClass]="emp.status | status">
-                            {{emp.status}}
-                        </span>
+                    <td class="px-6 py-4" [innerHTML]="emp.status | status">
                     </td>
                 </tr>
             </tbody>

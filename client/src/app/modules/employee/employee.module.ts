@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EmployeeRoutingModule } from './employee-routing.module';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
 import { EmployeeService } from 'src/app/services/employee.service';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { EmployeeComponent } from './components/employee/employee.component';
@@ -39,9 +39,8 @@ import { TemplateListComponent } from './components/template-list/template-list.
   ],
   imports: [
     CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    EmployeeRoutingModule
+    EmployeeRoutingModule,
+    SharedModule
   ]
 })
 export class EmployeeModule {

@@ -20,6 +20,14 @@ export class BaseService {
     return this.http.post(this.apiUrl + url, body, headers);
   }
 
+  postFormData(url:string,body:any,header:any){
+    let options = {
+      ...header
+    };
+    let headers = {headers: new HttpHeaders(options)};
+    return this.http.post(this.apiUrl + url, body, headers);
+  }
+
   get(url:string,header:any){
     let options = {
       ...header

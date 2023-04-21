@@ -5,6 +5,7 @@ const countrySchema = new mongoose.Schema({
     code: {type: String, require: true, unique: true},
     isd: {type: String},
     flag: {type: String},
+    nationality: {type: String},
     status: {type: Number, default: 0}
 }, {timestamps: true});
 

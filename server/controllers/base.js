@@ -59,9 +59,23 @@ const getById = async function(req,res) {
     }
 }
 
+const getData = async function(req,res) {
+    try {
+        let data = {};
+        data["body"] = req.body;
+        data["model"] = req.params.model;
+        let response = await BaseService.getData(data);
+        res.status(200).send(response);
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({status:false, message:error.message, error:error});
+    }
+}
+
 module.exports = {
     list: list,
     create: create,
     update: update,
-    getById: getById
+    getById: getById,
+    getData: getData
 };

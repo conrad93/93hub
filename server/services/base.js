@@ -56,9 +56,22 @@ const getById = async function(id, modelName, fields) {
     }
 }
 
+const getData = async function(data) {
+    try {
+        const model = mongoose.models[data.model] || require("../models/" + data.model);
+        let response = await model
+        .find(data.body.filter, data.body.feilds);
+        return {status: true, message:"Success!", data: response};
+    } catch (error) {
+        console.log(error);
+        return {status:false, message:error.message, error:error};
+    }
+}
+
 module.exports = {
     list: list,
     create: create,
     updateById: updateById,
-    getById: getById
+    getById: getById,
+    getData: getData
 };

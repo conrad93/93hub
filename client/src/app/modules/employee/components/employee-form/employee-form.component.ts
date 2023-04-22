@@ -46,7 +46,7 @@ export class EmployeeFormComponent {
       next: param => {
         this.id = param['id'];
         if(this.id) {
-          this.init()
+          this.init();
         } else {
           this.isInitializing = false;
         }

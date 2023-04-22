@@ -45,20 +45,20 @@
                 </tr>
             </thead>
             <tbody>
-                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700" *ngFor="let emp of data;">
+                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700" *ngFor="let country of data;">
                     <td class="px-6 py-4">
-                        <a (click)="edit(emp._id)" class="cursor-pointer font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                        <a (click)="edit(country._id)" class="cursor-pointer font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                     </td>    
                     <td class="px-6 py-4">
-                        {{emp.name}}
+                        {{country.name}}
                     </td>
                     <td class="px-6 py-4">
-                        {{emp.isd}}
+                        {{country.isd}}
                     </td>
                     <td class="px-6 py-4">
-                        <img class="w-8 h-8 rounded-full" src="{{apiUrl}}/api/file/show{{emp.flag}}" alt="{{emp.name}}">
+                        <img class="w-8 h-8 rounded-full" src="{{apiUrl}}/api/file/show{{country.flag}}" alt="{{country.name}}">
                     </td>
-                    <td class="px-6 py-4" [innerHTML]="emp.status | status">
+                    <td class="px-6 py-4" [innerHTML]="country.status | status">
                     </td>
                 </tr>
             </tbody>

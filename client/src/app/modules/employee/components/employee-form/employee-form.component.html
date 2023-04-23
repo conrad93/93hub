@@ -11,17 +11,17 @@
     <form *ngIf="!isInitializing" [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
         <div class="grid md:grid-cols-3 md:gap-6">
             <div class="w-full mb-6 group">
-                <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
+                <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email <span class="text-red-600 dark:text-red-500">*</span></label>
                 <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="" formControlName="email">
                 <p *ngIf="employeeForm.controls['email'].touched && !employeeForm.controls['email'].valid" class="mt-2 text-sm text-red-600 dark:text-red-500">Invalid Email.</p>
             </div>
             <div class="w-full mb-6 group">
-                <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
+                <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name <span class="text-red-600 dark:text-red-500">*</span></label>
                 <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="" formControlName="name">
                 <p *ngIf="employeeForm.controls['name'].touched && !employeeForm.controls['name'].valid" class="mt-2 text-sm text-red-600 dark:text-red-500">Name required.</p>
             </div>
             <div class="w-full mb-6 group">
-                <label for="status" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status</label>
+                <label for="status" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status <span class="text-red-600 dark:text-red-500">*</span></label>
                 <select id="status" name="status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" formControlName="status">
                     <option value="" selected disabled></option>
                     <option value="1">Active</option>
@@ -30,7 +30,7 @@
                 <p *ngIf="employeeForm.controls['status'].touched && !employeeForm.controls['status'].valid" class="mt-2 text-sm text-red-600 dark:text-red-500">Status required.</p>
             </div>
             <div class="w-full mb-6 group" *ngIf="!id">
-                <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+                <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password <span class="text-red-600 dark:text-red-500">*</span></label>
                 <input type="text" name="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="" formControlName="password">
                 <p *ngIf="employeeForm.controls['password'].touched && !employeeForm.controls['password'].valid" class="mt-2 text-sm text-red-600 dark:text-red-500">Required minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character.</p>
             </div>

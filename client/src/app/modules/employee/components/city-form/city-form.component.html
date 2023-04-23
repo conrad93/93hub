@@ -11,17 +11,17 @@
     <form *ngIf="!isInitializing" [formGroup]="cityForm" (ngSubmit)="onSubmit()">
         <div class="grid md:grid-cols-3 md:gap-6">
             <div class="w-full mb-6 group">
-                <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
+                <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name <span class="text-red-600 dark:text-red-500">*</span></label>
                 <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="" formControlName="name">
                 <p *ngIf="cityForm.controls['name'].touched && !cityForm.controls['name'].valid" class="mt-2 text-sm text-red-600 dark:text-red-500">Name required.</p>
             </div>
             <div class="w-full mb-6 group">
-                <label for="code" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Code</label>
+                <label for="code" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Code <span class="text-red-600 dark:text-red-500">*</span></label>
                 <input type="text" name="code" id="code" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="" formControlName="code">
                 <p *ngIf="cityForm.controls['code'].touched && !cityForm.controls['code'].valid" class="mt-2 text-sm text-red-600 dark:text-red-500">Code required.</p>
             </div>
             <div class="w-full mb-6 group">
-                <label for="countryCode" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Country</label>
+                <label for="countryCode" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Country <span class="text-red-600 dark:text-red-500">*</span></label>
                 <select id="countryCode" name="countryCode" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" formControlName="countryCode">
                     <option value="" selected disabled></option>
                     <option *ngFor="let op of countryData;" [value]="op.code">{{op.name}}</option>
@@ -29,7 +29,7 @@
                 <p *ngIf="cityForm.controls['countryCode'].touched && !cityForm.controls['countryCode'].valid" class="mt-2 text-sm text-red-600 dark:text-red-500">Country required.</p>
             </div>
             <div class="w-full mb-6 group">
-                <label for="status" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status</label>
+                <label for="status" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status <span class="text-red-600 dark:text-red-500">*</span></label>
                 <select id="status" name="status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" formControlName="status">
                     <option value="" selected disabled></option>
                     <option value="1">Active</option>

@@ -3,10 +3,10 @@ export class Template {
     public name: string;
     public code: string;
     public template: string;
-    public details: any;
+    public details: string;
     public categoryCode: string;
     public status: number;
-    constructor(_id: string, name: string, code: string, template: string, details: any, categoryCode: string, status: number) {
+    constructor(_id: string, name: string, code: string, template: string, details: string, categoryCode: string, status: number) {
         this._id = _id;
         this.name = name;
         this.code = code;

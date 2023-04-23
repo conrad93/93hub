@@ -2,11 +2,11 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CodeModel } from '@ngstack/code-editor';
 
 @Component({
-  selector: 'app-monaco-editor-component',
-  templateUrl: './monaco-editor-component.component.html',
-  styleUrls: ['./monaco-editor-component.component.css']
+  selector: 'app-monaco-editor',
+  templateUrl: './monaco-editor.component.html',
+  styleUrls: ['./monaco-editor.component.css']
 })
-export class MonacoEditorComponentComponent implements OnInit {
+export class MonacoEditorComponent implements OnInit {
 
   @Input() language!: string;
   @Input() value!: string;
@@ -40,6 +40,10 @@ export class MonacoEditorComponentComponent implements OnInit {
 
   onCodeChanged(value: string) {
     this.outputCode.emit(value);
+  }
+
+  clearEditor(){
+    this.model.value = '';
   }
 
 }

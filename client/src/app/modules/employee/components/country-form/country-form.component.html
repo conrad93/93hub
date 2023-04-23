@@ -11,27 +11,27 @@
     <form *ngIf="!isInitializing" [formGroup]="countryForm" (ngSubmit)="onSubmit()">
         <div class="grid md:grid-cols-3 md:gap-6">
             <div class="w-full mb-6 group">
-                <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
+                <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name <span class="text-red-600 dark:text-red-500">*</span></label>
                 <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="" formControlName="name">
                 <p *ngIf="countryForm.controls['name'].touched && !countryForm.controls['name'].valid" class="mt-2 text-sm text-red-600 dark:text-red-500">Name required.</p>
             </div>
             <div class="w-full mb-6 group">
-                <label for="code" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Code</label>
+                <label for="code" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Code <span class="text-red-600 dark:text-red-500">*</span></label>
                 <input type="text" name="code" id="code" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="" formControlName="code">
                 <p *ngIf="countryForm.controls['code'].touched && !countryForm.controls['code'].valid" class="mt-2 text-sm text-red-600 dark:text-red-500">Code required.</p>
             </div>
             <div class="w-full mb-6 group">
-                <label for="isd" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ISD</label>
+                <label for="isd" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ISD <span class="text-red-600 dark:text-red-500">*</span></label>
                 <input type="text" name="isd" id="isd" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="" formControlName="isd">
                 <p *ngIf="countryForm.controls['isd'].touched && !countryForm.controls['isd'].valid" class="mt-2 text-sm text-red-600 dark:text-red-500">ISD required.</p>
             </div>
             <div class="w-full mb-6 group">
-                <label for="nationality" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nationality</label>
+                <label for="nationality" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nationality <span class="text-red-600 dark:text-red-500">*</span></label>
                 <input type="text" name="code" id="code" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="" formControlName="nationality">
                 <p *ngIf="countryForm.controls['nationality'].touched && !countryForm.controls['nationality'].valid" class="mt-2 text-sm text-red-600 dark:text-red-500">Nationality required.</p>
             </div>
             <div class="w-full mb-6 group">
-                <label for="status" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status</label>
+                <label for="status" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status <span class="text-red-600 dark:text-red-500">*</span></label>
                 <select id="status" name="status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" formControlName="status">
                     <option value="" selected disabled></option>
                     <option value="1">Active</option>

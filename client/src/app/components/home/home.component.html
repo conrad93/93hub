@@ -1,1 +1,47 @@
-<p>home works!</p>
+<main class="h-screen">
+    <nav class="w-full px-4">
+        <div class="flex flex-wrap items-center justify-between mx-auto p-4">
+            <a [routerLink]="['/home']" class="flex items-center">
+                <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">93HUB</span>
+            </a>
+            <button data-collapse-toggle="navbar-main" type="button" class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-main" aria-expanded="false">
+                <span class="sr-only">Open main menu</span>
+                <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
+            </button>
+            <div class="hidden w-full md:block md:w-auto" id="navbar-main">
+                <ul class="flex flex-col font-medium mt-4 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-transparent dark:bg-gray-800 md:dark:bg-transparent dark:border-gray-700">
+                    <li routerLinkActive #home_rla="routerLinkActive">
+                        <a routerLink="/home" class="{{home_rla.isActive ? 'text-gray-900 md:hover:text-gray-900 dark:text-white md:dark:hover:text-gray-100 dark:hover:text-white' : 'text-gray-500 md:hover:text-gray-900 dark:text-white md:dark:hover:text-gray-100 dark:hover:text-white'}} block py-2 pl-3 pr-4 md:bg-transparent md:p-0 md:dark:bg-transparent" ariaCurrentWhenActive="page">Home</a>
+                    </li>
+                    <li routerLinkActive #blogs_rla="routerLinkActive">
+                        <a routerLink="/blogs" class="{{blogs_rla.isActive ? 'text-gray-900 md:hover:text-gray-900 dark:text-white md:dark:hover:text-gray-100 dark:hover:text-white' : 'text-gray-500 md:hover:text-gray-900 dark:text-white md:dark:hover:text-gray-100 dark:hover:text-white'}} block py-2 pl-3 pr-4 md:bg-transparent md:p-0 md:dark:bg-transparent" ariaCurrentWhenActive="page">Blogs</a>
+                    </li>
+                    <li routerLinkActive #signin_rla="routerLinkActive">
+                        <a routerLink="/sign-in" class="{{signin_rla.isActive ? 'text-gray-900 md:hover:text-gray-900 dark:text-white md:dark:hover:text-gray-100 dark:hover:text-white' : 'text-gray-500 md:hover:text-gray-900 dark:text-white md:dark:hover:text-gray-100 dark:hover:text-white'}} block py-2 pl-3 pr-4 md:bg-transparent md:p-0 md:dark:bg-transparent" ariaCurrentWhenActive="page">Sign-in</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav> 
+    <div class="main-body px-8 pt-24">
+        <div class="flex flex-wrap items-center justify-center">
+            <div class="text-center w-4/5">
+                <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white"><span class="underline underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">Welcome</span></h1>
+                <p class="text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400">Here at 93HUB we focus on providing valuable resource for businesses and individuals looking to create a professional and effective online presence.</p>
+            </div>         
+        </div>
+    </div>
+    <div class="">
+        <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+            <defs>
+              <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+            </defs>
+            <g class="parallax">
+              <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(0,0,255,0.7" />
+              <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(0,0,255,0.5)" />
+              <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(0,0,255,0.3)" />
+              <use xlink:href="#gentle-wave" x="48" y="7" fill="#0000ff" />
+            </g>
+        </svg>          
+    </div> 
+</main>

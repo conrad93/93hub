@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { EmployeeGuard } from './guards/employee.guard';
+import { CustomerGuard } from './guards/customer.guard';
 import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
@@ -24,6 +25,12 @@ const routes: Routes = [
     loadChildren: () => 
       import('./modules/employee/employee.module').then((m) => m.EmployeeModule),
     canActivate:[EmployeeGuard]
+  },
+  {
+    path:'customer', 
+    loadChildren: () => 
+      import('./modules/customer/customer.module').then((m) => m.CustomerModule),
+    canActivate:[CustomerGuard]
   },
   {
     path: '',

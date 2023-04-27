@@ -42,7 +42,8 @@
                     <div class="w-full group">
                         <label for="confirm_password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Confirm Password</label>
                         <input type="password" name="confirm_password" id="confirm_password" placeholder="" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" formControlName="confirm_password">
-                        <p *ngIf="customerForm.controls['confirm_password'].touched && !customerForm.controls['confirm_password'].valid" class="mt-2 text-sm text-red-600 dark:text-red-500">Does not match.</p>
+                        <p *ngIf="customerForm.controls['confirm_password'].touched && customerForm.get('confirm_password')?.errors?.['required']" class="mt-2 text-sm text-red-600 dark:text-red-500">Password required.</p>
+                        <p *ngIf="customerForm.get('confirm_password')?.errors?.['mismatch']" class="mt-2 text-sm text-red-600 dark:text-red-500">Does not match.</p>
                     </div>
                 </div>
                 <div class="flex items-center justify-center">

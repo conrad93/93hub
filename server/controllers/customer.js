@@ -16,7 +16,7 @@ const signin = async function(req,res) {
                 delete customer.data.password;
                 let data = {...customer.data};
                 let token = CommonService.generateToken(data, config.JWT_expiresIn);
-                CustomerService.updateById(employee.data._id, {token: token});
+                CustomerService.updateById(customer.data._id, {token: token});
                 data["token"] = token;
                 res.status(200).send({status:true, message:"Success!", data: data});
             } else {

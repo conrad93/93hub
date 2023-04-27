@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CustomerService } from 'src/app/services/customer.service';
 import { EmployeeService } from 'src/app/services/employee.service';
 import { ToastService } from 'src/app/services/toast.service';
 
@@ -16,7 +17,7 @@ export class SignInComponent {
   customerForm: FormGroup;
   isLoading: boolean = false;
 
-  constructor(private employeeService: EmployeeService, private toastService: ToastService, private fb: FormBuilder, private router: Router){
+  constructor(private employeeService: EmployeeService, private customerService: CustomerService, private toastService: ToastService, private fb: FormBuilder, private router: Router){
     this.employeeForm = this.fb.group({
       email: ['', [
         Validators.required,
@@ -93,17 +94,17 @@ export class SignInComponent {
     this.isLoading = true;
     let data = this.customerForm.value;
     if(this.customerForm.valid){
-      this.employeeService.signin(data).subscribe({
+      this.customerService.signin(data).subscribe({
         next: (res: any) => {
           if(res["status"]){
-            this.employeeService.setSignedInEmployee(res["data"]);
+            this.customerService.setSignedInCustomer(res["data"]);
             this.toastService.show({
               message:res["message"], 
               class:"border-green-800 text-green-800 dark:text-green-400", 
               timeout: 3000
             });
-            this.employeeForm.reset();
-            this.router.navigate(['/employee']);
+            this.customerForm.reset();
+            this.router.navigate(['/customer']);
           } else {
             this.toastService.show({
               message:res["message"], 

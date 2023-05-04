@@ -7,7 +7,7 @@ const list = async function(data) {
         .find(data.body.filter, data.body.fields)
         .limit(data.body.limit || 100)
         .skip(
-            (data.body.limit || 100) * ((data.body.page || 0) - 1)
+            (data.body.limit || 100) * ((data.body.page || 1) - 1)
         )
         .sort({
             [data.body.sort_by || "createdAt"]: data.body.sort_type ? (data.body.sort_type === "ASC" ? 1 : -1) : -1

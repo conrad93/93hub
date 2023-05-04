@@ -4,11 +4,13 @@ var EmployeeRoute = require("./employee");
 var CustomerRoute = require("./customer");
 var BaseRoute = require("./base");
 var FileRoute = require("./file");
+var TemplateRoute = require("./template");
 
 router.use("/api/employee", EmployeeRoute);
 router.use("/api/customer", CustomerRoute);
 router.use("/api/base", BaseRoute);
 router.use("/api/file", FileRoute);
+router.use("/api/template", TemplateRoute);
 
 router.use("*", (req,res) => {
     console.log("404: Route not found");

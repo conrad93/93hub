@@ -67,7 +67,7 @@ export class TemplateFormComponent {
       filter: {
         status: 1
       },
-      feilds: {
+      fields: {
         name: 1,
         code: 1
       }

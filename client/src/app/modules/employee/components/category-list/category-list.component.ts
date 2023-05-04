@@ -23,7 +23,7 @@ export class CategoryListComponent {
     name: "",
     status: ""
   };
-  feilds: object = {
+  fields: object = {
     name: 1,
     code: 1,
     status: 1
@@ -57,7 +57,7 @@ export class CategoryListComponent {
       sort_by: this.sort_by,
       sort_type: this.sort_type,
       filter: filter,
-      feilds: this.feilds
+      fields: this.fields
     };
     this.baseService.post("/api/base/list/category",req,{"e_token": this.employee?.token}).subscribe({
       next: (v: any) => {

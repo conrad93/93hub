@@ -1,8 +1,10 @@
 {
     "preview": {
-        "meta_description_content": "Web developer resume",
-        "meta_keywords_content": "HTML, CSS, JavaScript",
-        "meta_author_content": "John Doe",
+        "meta": [
+            {"name": "description", "content": "Web developer resume"},
+            {"name": "keywords", "content": "HTML, CSS, JavaScript"},
+            {"name": "author", "content": "John Doe"}
+        ],
         "page_title": "John Doe - Resume",
         "first_name": "John",
         "last_name": "Doe",
@@ -32,22 +34,22 @@
             {
                 "course_name": "Art & Multimedia",
                 "institute_name": "Oxford University",
-                "from_year": "2008",
-                "to_year": "2015",
+                "from_date": "2008",
+                "to_date": "2015",
                 "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum"
             }, 
             {
                 "course_name": "Art & Multimedia",
                 "institute_name": "Oxford University",
-                "from_year": "2008",
-                "to_year": "2015",
+                "from_date": "2008",
+                "to_date": "2015",
                 "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum"
             }, 
             {
                 "course_name": "Art & Multimedia",
                 "institute_name": "Oxford University",
-                "from_year": "2008",
-                "to_year": "2015",
+                "from_date": "2008",
+                "to_date": "2015",
                 "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum"
             }
         ],
@@ -55,8 +57,8 @@
             {
                 "title": "UI/UX Designer",
                 "company_name": "IronSketch",
-                "from_year": "2008",
-                "to_year": "2015",
+                "from_date": "2008",
+                "to_date": "2015",
                 "responsibility": [
                     {"name": "Validate CSS"},
                     {"name": "Project Management"}
@@ -65,8 +67,8 @@
             {
                 "title": "UI/UX Designer",
                 "company_name": "IronSketch",
-                "from_year": "2008",
-                "to_year": "2015",
+                "from_date": "2008",
+                "to_date": "2015",
                 "responsibility": [
                     {"name": "Validate CSS"},
                     {"name": "Project Management"}
@@ -75,8 +77,8 @@
             {
                 "title": "UI/UX Designer",
                 "company_name": "IronSketch",
-                "from_year": "2008",
-                "to_year": "2015",
+                "from_date": "2008",
+                "to_date": "2015",
                 "responsibility": [
                     {"name": "Validate CSS"},
                     {"name": "Project Management"}
@@ -86,22 +88,27 @@
     },
     "form": [
         {
-            "label": "Meta Description",
-            "name": "meta_description_content",
-            "type": "string",
-            "value": ""
-        },
-        {
-            "label": "Meta Keywords",
-            "name": "meta_keywords_content",
-            "type": "string",
-            "value": ""
-        },
-        {
-            "label": "Meta Author",
-            "name": "meta_author_content",
-            "type": "string",
-            "value": ""
+            "label": "Meta Tags",
+            "name": "meta",
+            "type": "array",
+            "value": "",
+            "fields": {"name": "", "content": ""},
+            "hasChild": true,
+            "isAddable": true,
+            "child": [
+                {
+                    "label": "Name",
+                    "name": "name",
+                    "type": "string",
+                    "value": ""
+                },
+                {
+                    "label": "Content",
+                    "name": "content",
+                    "type": "string",
+                    "value": ""
+                }
+            ]
         },
         {
             "label": "Page Title",
@@ -206,7 +213,7 @@
             "name": "skills_array",
             "type": "array",
             "value": "",
-            "feilds": {"name": ""},
+            "fields": {"name": ""},
             "hasChild": true,
             "isAddable": true,
             "child": [
@@ -231,7 +238,7 @@
             "name": "education_array",
             "type": "array",
             "value": "",
-            "feilds": {"course_name": "", "institute_name": "", "from_year": "", "to_year": "", "description": ""},
+            "fields": {"course_name": "", "institute_name": "", "from_date": "", "to_date": "", "description": ""},
             "hasChild": true,
             "isAddable": true,
             "child": [
@@ -249,7 +256,7 @@
                 },
                 {
                     "label": "From(year)",
-                    "name": "from_year",
+                    "name": "from_date",
                     "type": "number",
                     "min": "1900",
                     "max": "3999",
@@ -258,7 +265,7 @@
                 },
                 {
                     "label": "To(year)",
-                    "name": "to_year",
+                    "name": "to_date",
                     "type": "number",
                     "min": "1900",
                     "max": "3999",
@@ -278,7 +285,7 @@
             "name": "experience_array",
             "type": "array",
             "value": "",
-            "feilds": {"title": "", "company_name": "", "from_year": "", "to_year": "", "responsibility": []},
+            "fields": {"title": "", "company_name": "", "from_date": "", "to_date": "", "responsibility": []},
             "hasChild": true,
             "isAddable": true,
             "child": [
@@ -296,7 +303,7 @@
                 },
                 {
                     "label": "From(year)",
-                    "name": "from_year",
+                    "name": "from_date",
                     "type": "number",
                     "min": "1900",
                     "max": "3999",
@@ -305,7 +312,7 @@
                 },
                 {
                     "label": "To(year)",
-                    "name": "to_year",
+                    "name": "to_date",
                     "type": "number",
                     "min": "1900",
                     "max": "3999",
@@ -317,7 +324,7 @@
                     "name": "responsibility",
                     "type": "array",
                     "value": "",
-                    "feilds": {"name": ""},
+                    "fields": {"name": ""},
                     "hasChild": true,
                     "isAddable": true,
                     "child": [

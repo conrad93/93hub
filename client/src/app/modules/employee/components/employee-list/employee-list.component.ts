@@ -22,7 +22,7 @@ export class EmployeeListComponent implements OnInit{
     email: "",
     status: ""
   };
-  feilds: object = {
+  fields: object = {
     name: 1,
     email: 1,
     status: 1
@@ -56,7 +56,7 @@ export class EmployeeListComponent implements OnInit{
       sort_by: this.sort_by,
       sort_type: this.sort_type,
       filter: filter,
-      feilds: this.feilds
+      fields: this.fields
     };
     this.baseService.post("/api/base/list/employee",req,{"e_token": this.employee?.token}).subscribe({
       next: (v: any) => {

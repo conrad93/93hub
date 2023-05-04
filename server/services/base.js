@@ -4,7 +4,7 @@ const list = async function(data) {
     try {
         const model = mongoose.models[data.model] || require("../models/" + data.model);
         let response = await model
-        .find(data.body.filter, data.body.feilds)
+        .find(data.body.filter, data.body.fields)
         .limit(data.body.limit || 100)
         .skip(
             (data.body.limit || 100) * ((data.body.page || 0) - 1)
@@ -13,7 +13,7 @@ const list = async function(data) {
             [data.body.sort_by || "createdAt"]: data.body.sort_type ? (data.body.sort_type === "ASC" ? 1 : -1) : -1
         });
         let count = await model
-        .find(data.body.filter, data.body.feilds)
+        .find(data.body.filter, data.body.fields)
         .count();
         return {status: true, message:"Success!", data: response, count: count};
     } catch (error) {
@@ -60,7 +60,7 @@ const getData = async function(data) {
     try {
         const model = mongoose.models[data.model] || require("../models/" + data.model);
         let response = await model
-        .find(data.body.filter, data.body.feilds);
+        .find(data.body.filter, data.body.fields);
         return {status: true, message:"Success!", data: response};
     } catch (error) {
         console.log(error);

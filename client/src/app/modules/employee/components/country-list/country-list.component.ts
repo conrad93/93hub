@@ -24,7 +24,7 @@ export class CountryListComponent implements OnInit{
     isd: "",
     status: ""
   };
-  feilds: object = {
+  fields: object = {
     name: 1,
     isd: 1,
     flag: 1,
@@ -59,7 +59,7 @@ export class CountryListComponent implements OnInit{
       sort_by: this.sort_by,
       sort_type: this.sort_type,
       filter: filter,
-      feilds: this.feilds
+      fields: this.fields
     };
     this.baseService.post("/api/base/list/country",req,{"e_token": this.employee?.token}).subscribe({
       next: (v: any) => {

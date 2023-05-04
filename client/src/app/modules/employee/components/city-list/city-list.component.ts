@@ -23,7 +23,7 @@ export class CityListComponent {
     name: "",
     status: ""
   };
-  feilds: object = {
+  fields: object = {
     name: 1,
     code: 1,
     countryCode: 1,
@@ -58,7 +58,7 @@ export class CityListComponent {
       sort_by: this.sort_by,
       sort_type: this.sort_type,
       filter: filter,
-      feilds: this.feilds
+      fields: this.fields
     };
     this.baseService.post("/api/base/list/city",req,{"e_token": this.employee?.token}).subscribe({
       next: (v: any) => {

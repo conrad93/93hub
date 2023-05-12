@@ -1,7 +1,7 @@
 const CommonService = require("../services/common");
 
 const verify = async function(req,res,next) {
-    let token = req.headers.e_token;
+    let token = req.headers.e_token || req.headers.c_token;
     if(token){
         try {
             let decoded = CommonService.verifyToken(token);

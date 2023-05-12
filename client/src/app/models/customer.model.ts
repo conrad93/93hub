@@ -13,7 +13,8 @@ export class Customer {
     public country: string;
     public nationality: string;
     public dob: string;
-    constructor(_id: string, first_name: string, last_name: string, password: string, token: string, status: number, email: string, isd: string, phone_no: string, address: string, city: string, country: string, nationality: string, dob: string) {
+    public username: string;
+    constructor(_id: string, first_name: string, last_name: string, password: string, token: string, status: number, email: string, isd: string, phone_no: string, address: string, city: string, country: string, nationality: string, dob: string, username: string) {
         this._id = _id;
         this.first_name = first_name;
         this.last_name = last_name;
@@ -28,5 +29,6 @@ export class Customer {
         this.country = country;
         this.nationality = nationality;
         this.dob = dob;
+        this.username = username;
     }
 }

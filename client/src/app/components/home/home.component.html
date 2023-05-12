@@ -12,11 +12,11 @@
                 <li routerLinkActive #home_rla="routerLinkActive">
                     <a routerLink="/home" class="{{ home_rla.isActive ? getActiveClass() : getPassiveClass() }} block py-2 pl-3 pr-4 rounded md:p-0" ariaCurrentWhenActive="page">Home</a>
                 </li>
-                <li routerLinkActive #blogs_rla="routerLinkActive">
+                <!-- <li routerLinkActive #blogs_rla="routerLinkActive">
                     <a routerLink="/blogs" class="{{ blogs_rla.isActive ? getActiveClass() : getPassiveClass() }} block py-2 pl-3 pr-4 rounded md:p-0" ariaCurrentWhenActive="page">Blogs</a>
-                </li>
+                </li> -->
                 <li routerLinkActive #signin_rla="routerLinkActive">
-                    <a routerLink="/sign-in" class="{{ blogs_rla.isActive ? getActiveClass() : getPassiveClass() }} block py-2 pl-3 pr-4 rounded md:p-0" ariaCurrentWhenActive="page">Sign-in</a>
+                    <a routerLink="/sign-in" class="{{ signin_rla.isActive ? getActiveClass() : getPassiveClass() }} block py-2 pl-3 pr-4 rounded md:p-0" ariaCurrentWhenActive="page">Sign-in</a>
                 </li>
             </ul>
         </div>

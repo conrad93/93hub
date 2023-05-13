@@ -4,6 +4,6 @@ var TemplateControl = require("../controllers/template");
 var Auth = require("../middleware/auth");
 
 router.post("/list", TemplateControl.list);
-// router.get("/show/*", TemplateControl.show);
+router.get("/image/:code", TemplateControl.getImage);
 
 module.exports = router;

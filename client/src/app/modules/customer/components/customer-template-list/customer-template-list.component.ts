@@ -1,6 +1,5 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import html2canvas from 'html2canvas';
 import { Customer } from 'src/app/models/customer.model';
 import { BaseService } from 'src/app/services/base.service';
 import { CustomerService } from 'src/app/services/customer.service';
@@ -68,12 +67,6 @@ export class CustomerTemplateListComponent implements OnInit {
         if(v["status"]){
           this.data = [...v["data"]];
           this.count = v["count"] ? v["count"] : 0;
-          if(this.data?.length){
-            for(let i = 0; i < this.data.length; i++){
-              console.log(await this.convertToImage(this.data[i]["preview"]));
-              // this.data[i]["preview"] = this.data[i]["preview"] ? await this.convertToImage(this.data[i]["preview"]) : "";
-            }
-          }
         }
         this.isLoading = false;
       },
@@ -105,43 +98,6 @@ export class CustomerTemplateListComponent implements OnInit {
   moveNext(){
     this.page = this.page + 1;
     this.applyFilter();
-  }
-
-  convertToImage(html: string){
-    return new Promise((resolve, reject) => {
-      let element = this.convertToHTML("<h1>hello world</h1>");
-      // let element = this.convertToHTML(html);
-  
-      // let canvas = this.renderer.createElement('canvas');
-      // let context = canvas.getContext('2d');
-  
-      // canvas.width = 100;
-      // canvas.height = 100;
-  
-      // let svg = new Blob([element.outerHTML], { type: 'image/svg+xml' });
-      // const image = new Image();
-      // image.onload = () => {
-      //   context.drawImage(image, 0, 0);
-      //   resolve(canvas.toDataURL('image/png'));
-      // };
-      // image.onerror = () => {
-      //   resolve("");
-      // };
-      // image.src = window.URL.createObjectURL(svg);
-
-      html2canvas(element).then((canvas) => {
-        resolve(canvas.toDataURL('image/png'));
-      }).catch((error) => {
-        console.error(error);
-        resolve("");
-      });
-    });
-  }
-
-  convertToHTML(html: string){
-    let element = document.createElement('div');
-    element.innerHTML = html;
-    return element;
   }
 
 }

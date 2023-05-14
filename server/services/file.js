@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const puppeteer = require('puppeteer');
 
 const formUpload = async function(file, name, formConfig) {
     try {
@@ -68,9 +69,47 @@ const fsReadFile = function(filePath){
     });
 }
 
+const generateImage = async function(html = ""){
+    const browser = await puppeteer.launch({ headless: "new" });
+    const page = await browser.newPage();
+    await page.setViewport({ width: 1200, height: 900 });
+    await page.setContent(html);
+    const imageBuffer = await page.screenshot({ type: 'png' });
+    await browser.close();
+    return imageBuffer;
+}
+
+const getPath = function(str){
+    return path.join(__dirname, "..", "..", "..", "uploads", str);
+}
+
+const exists = function(path){
+    return fs.existsSync(path);
+}
+
+const saveImageBuffer = function(str, name, imageBuffer){
+    return new Promise((resolve,reject) => {
+        let folderPath = path.join(__dirname, "..", "..", "..", "uploads", str);
+        if(!fs.existsSync(folderPath)){
+            fs.mkdirSync(folderPath, {recursive: true});
+        }
+        fs.writeFile(folderPath + "/" + name, imageBuffer, function(err){
+            if(err){
+                console.error(err);
+                resolve( {status:false, message: "Failed.", error:err} );
+            }
+            resolve( {status: true, message:"Success!"} );
+        });
+    });
+}
+
 module.exports = {
     formUpload: formUpload,
     getMimeType: getMimeType,
     show: show,
-    fsReadFile: fsReadFile
+    fsReadFile: fsReadFile,
+    getPath: getPath,
+    exists: exists,
+    generateImage: generateImage,
+    saveImageBuffer: saveImageBuffer
 };

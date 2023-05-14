@@ -2,8 +2,6 @@ const Template = require("../models/template");
 const ejs = require("ejs");
 const nodeHtmlToImage = require('node-html-to-image');
 const FileService = require("./file");
-const fs = require('fs');
-const path = require('path');
 
 const list = async function(data) {
     try {
@@ -32,27 +30,22 @@ const getTemplate = function(template, data){
 
 const getImage = async function(code, callback){
     try {
-        let filePath = path.join(__dirname, "..", "..", "..", "uploads", "templates", (code + ".png"));
-        if(fs.existsSync(filePath)){
-            let rFile = await FileService.fsReadFile(filePath); 
+        let path = FileService.getPath("/templates/" + code + ".png");
+        if(FileService.exists(path)){
+            let rFile = await FileService.fsReadFile(path); 
             return callback(rFile);
         } else {
-            let folderPath = path.join(__dirname, "..", "..", "..", "uploads", "templates");
             let data = await Template.findOne({code: code}, {template: 1, details: 1}).lean();
             if(data){
                 let template = getTemplate(data.template, {data: JSON.parse(data.details).preview});
-                nodeHtmlToImage({
-                    output: folderPath + code + ".png",
-                    html: template
-                })
-                .then(async () => {
-                    console.log(folderPath);
-                    let rFile = await FileService.fsReadFile(filePath); 
+                let imageBuffer = await FileService.generateImage(template);
+                let saveFile = await FileService.saveImageBuffer("/templates", code + ".png", imageBuffer);
+                if(saveFile.status){
+                    let rFile = await FileService.fsReadFile(path); 
                     return callback(rFile);
-                })
-                .catch(() => {
+                } else {
                     return callback({status: 500, contentType: "text/plain", data: "Error"});
-                });
+                }
             } else {
                 return callback({status: 404, contentType: "text/plain", data: "404 Not Found"});
             }

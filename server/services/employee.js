@@ -11,9 +11,9 @@ const create = async function(data) {
     }
 }
 
-const getEmployee = async function(data) {
+const getEmployee = async function(data, fields) {
     try {
-        let employee = await Employee.findOne({...data}, {name: 1, email: 1, password: 1, status: 1, token: 1});
+        let employee = await Employee.findOne({...data}, fields).lean();
         return {status: true, message:"Success!", data: employee};
     } catch (error) {
         console.log(error);

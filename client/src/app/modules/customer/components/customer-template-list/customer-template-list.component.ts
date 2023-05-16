@@ -27,8 +27,6 @@ export class CustomerTemplateListComponent implements OnInit {
     name: 1,
     code: 1,
     categoryCode: 1,
-    template: 1,
-    details: 1,
     status: 1
   };
   customer: Customer | null = null;
@@ -48,7 +46,9 @@ export class CustomerTemplateListComponent implements OnInit {
 
   applyFilter(){
     this.isLoading = true;
-    let filter:any = {};
+    let filter:any = {
+      status: 1
+    };
     Object.keys(this.search).forEach(key => {
       if(this.search[key]){
         filter[key] = this.search[key];
@@ -98,6 +98,10 @@ export class CustomerTemplateListComponent implements OnInit {
   moveNext(){
     this.page = this.page + 1;
     this.applyFilter();
+  }
+
+  toTheme(id:string){
+    this.router.navigate(["/customer/template", id], {relativeTo: this.route});
   }
 
 }

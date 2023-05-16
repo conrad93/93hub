@@ -9,9 +9,12 @@ const signin = async function(req,res) {
         if(!email && !password) {
             return res.status(400).send("Email and password required.");
         }
-        const employee = await EmployeeService.getEmployee({email: email, status: 1});
+        const employee = await EmployeeService.getEmployee(
+            {email: email, status: 1},
+            {name: 1, email: 1, password: 1, status: 1}
+        );
         if(employee.status && employee.data){
-            let isValidPassword = await bcrypt.compare(password, employee.data.password);
+            let isValidPassword = bcrypt.compare(password, employee.data.password);
             if(isValidPassword) {
                 let data = {
                     _id: employee.data._id,
@@ -54,7 +57,10 @@ const verify = async function(req,res) {
     if(token){
         try {
             let decoded = CommonService.verifyToken(token);
-            let employee = await EmployeeService.getEmployee({token: token});
+            let employee = await EmployeeService.getEmployee(
+                {token: token},
+                {name: 1, email: 1, token: 1}
+            );
             res.status(200).send(employee);
         } catch (error) {
             console.log(error);

@@ -1,6 +1,5 @@
 const Template = require("../models/template");
 const ejs = require("ejs");
-const nodeHtmlToImage = require('node-html-to-image');
 const FileService = require("./file");
 
 const list = async function(data) {

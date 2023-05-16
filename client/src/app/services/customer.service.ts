@@ -5,6 +5,7 @@ import { BehaviorSubject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Customer } from '../models/customer.model';
 import { LoaderService } from './loader.service';
+import { Location } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class CustomerService {
   apiUrl = environment.apiUrl;
   signedInCustomer = new BehaviorSubject<Customer | null>(null);
 
-  constructor(private http: HttpClient, private router: Router, private loaderService: LoaderService) { }
+  constructor(private location: Location, private http: HttpClient, private router: Router, private loaderService: LoaderService) { }
 
   signOut(){
     localStorage.removeItem('c_token');
@@ -44,9 +45,12 @@ export class CustomerService {
       this.getCustomerByToken(token)
       .subscribe({
         next: (res: any) => {
+          let currentURL = this.location.path();
           if(res["status"]){
             this.signedInCustomer.next(res["data"]);
-            this.router.navigate(['/customer']);
+            if(!currentURL.includes("customer")){
+              this.router.navigate(['/customer']);
+            }
           }
         },
         error: (err) => {

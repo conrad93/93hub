@@ -11,9 +11,9 @@ const create = async function(data) {
     }
 }
 
-const getCustomer = async function(data) {
+const getCustomer = async function(data, fields) {
     try {
-        let customer = await Customer.findOne({...data}, {});
+        let customer = await Customer.findOne({...data}, fields).lean();
         return {status: true, message:"Success!", data: customer};
     } catch (error) {
         console.log(error);

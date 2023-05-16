@@ -9,9 +9,12 @@ const signin = async function(req,res) {
         if(!username && !password) {
             return res.status(400).send("Username and password required.");
         }
-        const customer = await CustomerService.getCustomer({username: username, status: 1});
+        const customer = await CustomerService.getCustomer(
+            {username: username, status: 1}, 
+            {username: 1, first_name: 1, last_name: 1, password: 1, email: 1}
+        );
         if(customer.status && customer.data){
-            let isValidPassword = await bcrypt.compare(password, customer.data.password);
+            let isValidPassword = bcrypt.compare(password, customer.data.password);
             if(isValidPassword) {
                 delete customer.data.password;
                 let data = {...customer.data};
@@ -50,7 +53,10 @@ const verify = async function(req,res) {
     if(token){
         try {
             let decoded = CommonService.verifyToken(token);
-            let customer = await CustomerService.getCustomer({token: token});
+            let customer = await CustomerService.getCustomer(
+                {token: token},
+                {username: 1, first_name: 1, last_name: 1, email: 1, token: 1}
+            );
             res.status(200).send(customer);
         } catch (error) {
             console.log(error);

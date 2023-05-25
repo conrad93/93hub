@@ -15,6 +15,18 @@ const customerSchema = new mongoose.Schema({
     country: {type: String},
     nationality: {type: String},
     dob: {type: String},
+    template_id: {type: String},
+    template_data: {type: Object},
+    title: {type: String},
+    facebook_link: {type: String},
+    twitter_link: {type: String},
+    github_link: {type: String},
+    linkedin_link: {type: String},
+    profile_pic: {type: String},
+    resume: {type: String},
+    skills_array: {type: Array},
+    education_array: {type: Array},
+    experience_array: {type: Array},
 }, {timestamps: true});
 
 module.exports = mongoose.model("customer",customerSchema);

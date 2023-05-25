@@ -1,11 +1,9 @@
 {
     "preview": {
-        "meta": [
-            {"name": "description", "content": "Web developer resume"},
-            {"name": "keywords", "content": "HTML, CSS, JavaScript"},
-            {"name": "author", "content": "John Doe"}
-        ],
-        "page_title": "John Doe - Resume",
+        "template_data": {
+            "meta_description": "This is a resume page.",
+            "page_title": "John Doe - Resume"
+        },
         "first_name": "John",
         "last_name": "Doe",
         "title": "Web Developer",
@@ -29,27 +27,27 @@
             {"name": "Python"}, 
             {"name": "Angular"}
         ],
-        "resume_url": "http://localhost:8000/static/uploads/pdf/:username",
+        "resume": "http://localhost:8000/static/uploads/:username",
         "education_array": [
             {
                 "course_name": "Art & Multimedia",
                 "institute_name": "Oxford University",
-                "from_date": "2008",
-                "to_date": "2015",
+                "from_year": "2008",
+                "to_year": "2015",
                 "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum"
             }, 
             {
                 "course_name": "Art & Multimedia",
                 "institute_name": "Oxford University",
-                "from_date": "2008",
-                "to_date": "2015",
+                "from_year": "2008",
+                "to_year": "2015",
                 "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum"
             }, 
             {
                 "course_name": "Art & Multimedia",
                 "institute_name": "Oxford University",
-                "from_date": "2008",
-                "to_date": "2015",
+                "from_year": "2008",
+                "to_year": "2015",
                 "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum"
             }
         ],
@@ -57,8 +55,8 @@
             {
                 "title": "UI/UX Designer",
                 "company_name": "IronSketch",
-                "from_date": "2008",
-                "to_date": "2015",
+                "from_year": "2008",
+                "to_year": "2015",
                 "responsibility": [
                     {"name": "Validate CSS"},
                     {"name": "Project Management"}
@@ -67,8 +65,8 @@
             {
                 "title": "UI/UX Designer",
                 "company_name": "IronSketch",
-                "from_date": "2008",
-                "to_date": "2015",
+                "from_year": "2008",
+                "to_year": "2015",
                 "responsibility": [
                     {"name": "Validate CSS"},
                     {"name": "Project Management"}
@@ -77,8 +75,8 @@
             {
                 "title": "UI/UX Designer",
                 "company_name": "IronSketch",
-                "from_date": "2008",
-                "to_date": "2015",
+                "from_year": "2008",
+                "to_year": "2015",
                 "responsibility": [
                     {"name": "Validate CSS"},
                     {"name": "Project Management"}
@@ -87,35 +85,6 @@
         ]
     },
     "form": [
-        {
-            "label": "Meta Tags",
-            "name": "meta",
-            "type": "array",
-            "value": "",
-            "fields": {"name": "", "content": ""},
-            "hasChild": true,
-            "isAddable": true,
-            "child": [
-                {
-                    "label": "Name",
-                    "name": "name",
-                    "type": "string",
-                    "value": ""
-                },
-                {
-                    "label": "Content",
-                    "name": "content",
-                    "type": "string",
-                    "value": ""
-                }
-            ]
-        },
-        {
-            "label": "Page Title",
-            "name": "page_title",
-            "type": "string",
-            "value": ""
-        },
         {
             "label": "First Name",
             "name": "first_name",
@@ -199,7 +168,7 @@
             "name": "profile_pic",
             "type": "file",
             "value": "",
-            "folder": "uploads/images",
+            "folder": "username",
             "path": "http://localhost:8000/static/uploads/images"
         },
         {
@@ -230,7 +199,7 @@
             "name": "resume",
             "type": "file",
             "value": "",
-            "folder": "uploads/pdf",
+            "folder": "username",
             "path": "http://localhost:8000/static/uploads/pdf"
         },
         {
@@ -238,7 +207,7 @@
             "name": "education_array",
             "type": "array",
             "value": "",
-            "fields": {"course_name": "", "institute_name": "", "from_date": "", "to_date": "", "description": ""},
+            "fields": {"course_name": "", "institute_name": "", "from_year": "", "to_year": "", "description": ""},
             "hasChild": true,
             "isAddable": true,
             "child": [
@@ -256,7 +225,7 @@
                 },
                 {
                     "label": "From(year)",
-                    "name": "from_date",
+                    "name": "from_year",
                     "type": "number",
                     "min": "1900",
                     "max": "3999",
@@ -265,7 +234,7 @@
                 },
                 {
                     "label": "To(year)",
-                    "name": "to_date",
+                    "name": "to_year",
                     "type": "number",
                     "min": "1900",
                     "max": "3999",
@@ -285,7 +254,7 @@
             "name": "experience_array",
             "type": "array",
             "value": "",
-            "fields": {"title": "", "company_name": "", "from_date": "", "to_date": "", "responsibility": []},
+            "fields": {"title": "", "company_name": "", "from_year": "", "to_year": "", "responsibility": []},
             "hasChild": true,
             "isAddable": true,
             "child": [
@@ -303,7 +272,7 @@
                 },
                 {
                     "label": "From(year)",
-                    "name": "from_date",
+                    "name": "from_year",
                     "type": "number",
                     "min": "1900",
                     "max": "3999",
@@ -312,7 +281,7 @@
                 },
                 {
                     "label": "To(year)",
-                    "name": "to_date",
+                    "name": "to_year",
                     "type": "number",
                     "min": "1900",
                     "max": "3999",
@@ -336,6 +305,29 @@
                         }
                     ]
                 } 
+            ]
+        },
+        {
+            "label": "Themplate Data",
+            "name": "template_data",
+            "type": "object",
+            "value": "",
+            "hasChild": true,
+            "isAddable": false,
+            "child": [
+                {
+                    "label": "Page Title",
+                    "name": "page_title",
+                    "type": "string",
+                    "value": ""
+                },
+                {
+                    "label": "Page Description",
+                    "name": "meta_description",
+                    "type": "string",
+                    "value": "",
+                    "max": 160
+                }
             ]
         }
     ]

@@ -55,8 +55,26 @@ const getImage = async function(code, callback){
     }
 }
 
+const preview = async function(code, body, callback){
+    try {
+        let data = await Template.findOne({code: code}, {template: 1, details: 1}).lean();
+        if(data){
+            let templateData = body ? body : JSON.parse(data.details).preview;
+            let template = getTemplate(data.template, {data: templateData});
+            return callback({status: 200, contentType: 'text/html', data: template});
+        } else {
+            return callback({status: 404, contentType: "text/plain", data: "404 Not Found"});
+        }
+        
+    } catch (error) {
+        console.error(error);
+        return callback({status: 500, contentType: "text/plain", data: "Error"});
+    }
+}
+
 module.exports = {
     list: list,
     getTemplate: getTemplate,
-    getImage: getImage
+    getImage: getImage,
+    preview: preview
 };

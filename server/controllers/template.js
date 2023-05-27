@@ -27,7 +27,24 @@ const getImage = async function(req,res) {
     }
 }
 
+const preview = async function(req,res) {
+    try {
+        let code = req.params.code;
+        let data = Object.keys(req.body).length ? req.body : null;
+        TemplateService.preview(code, data, function(response){
+            res.writeHead(response.status , {
+                "Content-Type": response.contentType
+            });
+            res.end(response.data);
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({status:false, message:error.message, error:error});
+    }
+}
+
 module.exports = {
     list: list,
-    getImage: getImage
+    getImage: getImage,
+    preview: preview
 };

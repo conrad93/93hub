@@ -14,6 +14,7 @@ export class CustomerTemplateListComponent implements OnInit {
 
   apiUrl = environment.apiUrl;
   isLoading:boolean = false;
+  showModal:boolean = false;
   limit: string = "10";
   count: number = 0;
   page: number = 1;
@@ -31,6 +32,10 @@ export class CustomerTemplateListComponent implements OnInit {
   };
   customer: Customer | null = null;
   data: any = [];
+  template = {
+    header: "",
+    body: ""
+  };
 
   constructor(private baseService: BaseService, private customerService: CustomerService, private router: Router, private route: ActivatedRoute, private renderer: Renderer2){
     this.customerService.signedInCustomer.subscribe({
@@ -63,7 +68,7 @@ export class CustomerTemplateListComponent implements OnInit {
       fields: this.fields
     };
     this.baseService.post("/api/template/list",req,{"c_token": this.customer?.token}).subscribe({
-      next: async (v: any) => {
+      next: (v: any) => {
         if(v["status"]){
           this.data = [...v["data"]];
           this.count = v["count"] ? v["count"] : 0;
@@ -102,6 +107,28 @@ export class CustomerTemplateListComponent implements OnInit {
 
   toTheme(id:string){
     this.router.navigate(["/customer/template", id], {relativeTo: this.route});
+  }
+
+  hideModal(){
+    this.showModal = false;
+    this.template.header = '';
+    this.template.body = '';
+  }
+  openModal(code: string, name: string){
+    this.showModal = true;
+    this.isLoading = true;
+    this.template.header = name;
+    this.baseService.postHeader("/api/template/preview/" + code, {}, {"c_token": this.customer?.token}, {responseType: 'text'}).subscribe({
+      next: (v: any) => {
+        this.template.body = v;
+        this.isLoading = false;
+      },
+      error: e => {
+        console.error(e);
+        this.isLoading = false;
+      },
+      complete: () => console.info("complete"),
+    });
   }
 
 }

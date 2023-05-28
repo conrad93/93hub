@@ -32,7 +32,7 @@ export class CustomerTemplateListComponent implements OnInit {
   };
   customer: Customer | null = null;
   data: any = [];
-  template = {
+  modal = {
     header: "",
     body: ""
   };
@@ -111,16 +111,16 @@ export class CustomerTemplateListComponent implements OnInit {
 
   hideModal(){
     this.showModal = false;
-    this.template.header = '';
-    this.template.body = '';
+    this.modal.header = '';
+    this.modal.body = '';
   }
   openModal(code: string, name: string){
     this.showModal = true;
     this.isLoading = true;
-    this.template.header = name;
+    this.modal.header = name;
     this.baseService.postHeader("/api/template/preview/" + code, {}, {"c_token": this.customer?.token}, {responseType: 'text'}).subscribe({
       next: (v: any) => {
-        this.template.body = v;
+        this.modal.body = v;
         this.isLoading = false;
       },
       error: e => {

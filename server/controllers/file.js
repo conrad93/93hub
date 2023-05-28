@@ -19,7 +19,7 @@ const form = async function(req,res) {
                 Object.keys(files).forEach(key => {
                     let extension = files[key].originalFilename.substring(files[key].originalFilename.lastIndexOf("."));
                     fields[key] = files[key].newFilename + extension;
-                    FileService.formUpload(files[key], fields[key], formConfig);
+                    FileService.formUpload(files[key], fields[key], formConfig.path);
                     fields[key] = folderPath + fields[key];
                 });
             }
@@ -64,7 +64,33 @@ const show = async function(req,res) {
     }
 }
 
+const upload = async function(req,res) {
+    try {
+        let form = new formidable.IncomingForm();
+        form.parse(req, async function(err, fields, files){
+            if(err){
+                console.error(err);
+                res.status(500).send({status:false, message:"Form parse error."});
+                return;
+            }
+            let response;
+            if(files && Object.keys(files).length){
+                let folderPath = fields['folders'] ? "/" + fields['folders'] + "/" : "/";
+                let extension = files['_file'].originalFilename.substring(files['_file'].originalFilename.lastIndexOf("."));
+                fields['name'] = fields['name'] + extension;
+                response = await FileService.formUpload(files['_file'], fields['name'], fields['folders']);
+                console.log(response)
+            }
+            res.status(200).send(response);
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({status:false, message:error.message, error:error});
+    }
+}
+
 module.exports = {
     form: form,
-    show: show
+    show: show,
+    upload: upload
 };

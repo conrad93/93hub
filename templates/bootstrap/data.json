@@ -113,7 +113,10 @@
             "label": "ISD",
             "name": "isd",
             "type": "select",
-            "value": ""
+            "value": "",
+            "optionArrayName": "countryData",
+            "optionCode": "isd",
+            "optionName": "isd"
         },
         {
             "label": "Phone No.",
@@ -131,13 +134,19 @@
             "label": "City",
             "name": "city",
             "type": "select",
-            "value": ""
+            "value": "",
+            "optionArrayName": "cityData",
+            "optionCode": "name",
+            "optionName": "name"
         },
         {
             "label": "Country",
             "name": "country",
             "type": "select",
-            "value": ""
+            "value": "",
+            "optionArrayName": "countryData",
+            "optionCode": "name",
+            "optionName": "name"
         },
         {
             "label": "Facebook Link",
@@ -167,9 +176,21 @@
             "label": "Profile Picture",
             "name": "profile_pic",
             "type": "file",
+            "fileType": "image",
+            "accept": "image/*",
             "value": "",
             "folder": "username",
             "path": "http://localhost:8000/static/uploads/images"
+        },
+        {
+            "label": "Resume",
+            "name": "resume",
+            "type": "file",
+            "fileType": "pdf",
+            "accept": "application/pdf",
+            "value": "",
+            "folder": "username",
+            "path": "http://localhost:8000/static/uploads/pdf"
         },
         {
             "label": "About me",
@@ -193,14 +214,6 @@
                     "value": ""
                 }
             ]
-        },
-        {
-            "label": "Resume",
-            "name": "resume",
-            "type": "file",
-            "value": "",
-            "folder": "username",
-            "path": "http://localhost:8000/static/uploads/pdf"
         },
         {
             "label": "Education",
@@ -308,7 +321,7 @@
             ]
         },
         {
-            "label": "Themplate Data",
+            "label": "Template Data",
             "name": "template_data",
             "type": "object",
             "value": "",

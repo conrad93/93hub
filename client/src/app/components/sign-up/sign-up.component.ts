@@ -13,8 +13,6 @@ export class SignUpComponent {
 
   customerForm: FormGroup;
   isLoading: boolean = false;
-  countryData: any = [];
-  cityData: any = [];
 
   constructor(private baseService: BaseService, private toastService: ToastService, private fb: FormBuilder, private router: Router){
     this.customerForm = this.fb.group({

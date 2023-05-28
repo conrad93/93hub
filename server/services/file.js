@@ -2,20 +2,23 @@ const fs = require('fs');
 const path = require('path');
 const puppeteer = require('puppeteer');
 
-const formUpload = async function(file, name, formConfig) {
+const formUpload = async function(file, name, folders) {
     try {
-        let folderPath = path.join(__dirname, "..", "..", "..", "uploads", formConfig.path ? formConfig.path : '');
+        let folderPath = path.join(__dirname, "..", "..", "..", "uploads", folders ? folders : '');
         if(!fs.existsSync(folderPath)){
             fs.mkdirSync(folderPath, {recursive: true});
         }
         let readFile = fs.readFileSync(file.filepath);
-        fs.writeFile(folderPath + "/" + name, readFile, function(err){
-            if(err){
-                console.error(err);
-                return {status:false, message: "Failed.", error:err};
-            }
-            return {status: true, message:"Success!"};
+        let response = new Promise(resolve => {
+            fs.writeFile(folderPath + "/" + name, readFile, function (err) {
+                if (err) {
+                    console.error(err);
+                    resolve({ status: false, message: "Failed.", error: err });
+                }
+                resolve({ status: true, message: "Success!", name: name });
+            });
         });
+        return response;
     } catch (error) {
         console.error(error);
         return {status:false, message:error.message, error:error};

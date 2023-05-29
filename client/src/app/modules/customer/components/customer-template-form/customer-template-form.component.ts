@@ -192,8 +192,9 @@ export class CustomerTemplateFormComponent {
     this.router.navigate(["/customer/templates"], {relativeTo: this.route});
   }
 
-  onSubmit(){
+  onSave(){
     this.isLoading = true;
+    this.templateForm["template_id"] = this.template['_id'];
     this.baseService.post('/api/customer/update/' + this.customer?._id, this.templateForm, {"c_token": this.customer?.token}).subscribe({
       next: (res: any) => {
         if(res["status"]){

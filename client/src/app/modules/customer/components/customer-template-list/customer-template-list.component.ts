@@ -52,7 +52,8 @@ export class CustomerTemplateListComponent implements OnInit {
   applyFilter(){
     this.isLoading = true;
     let filter:any = {
-      status: 1
+      status: 1,
+      code: {$ne: "default"}
     };
     Object.keys(this.search).forEach(key => {
       if(this.search[key]){

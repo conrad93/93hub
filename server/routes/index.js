@@ -5,7 +5,9 @@ var CustomerRoute = require("./customer");
 var BaseRoute = require("./base");
 var FileRoute = require("./file");
 var TemplateRoute = require("./template");
+var SiteRoute = require("./site");
 
+router.use("/site", SiteRoute);
 router.use("/api/employee", EmployeeRoute);
 router.use("/api/customer", CustomerRoute);
 router.use("/api/base", BaseRoute);

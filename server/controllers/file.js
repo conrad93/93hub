@@ -75,11 +75,9 @@ const upload = async function(req,res) {
             }
             let response;
             if(files && Object.keys(files).length){
-                let folderPath = fields['folders'] ? "/" + fields['folders'] + "/" : "/";
                 let extension = files['_file'].originalFilename.substring(files['_file'].originalFilename.lastIndexOf("."));
                 fields['name'] = fields['name'] + extension;
                 response = await FileService.formUpload(files['_file'], fields['name'], fields['folders']);
-                console.log(response)
             }
             res.status(200).send(response);
         });

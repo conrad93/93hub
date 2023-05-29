@@ -27,6 +27,10 @@ const getTemplate = function(template, data){
     return ejs.render(template, data);
 }
 
+const findTemplate = async function(filters, fields) {
+    return await Template.findOne(filters, fields).lean();
+}
+
 const getImage = async function(code, callback){
     try {
         let path = FileService.getPath("/templates/" + code + ".png");
@@ -76,5 +80,6 @@ module.exports = {
     list: list,
     getTemplate: getTemplate,
     getImage: getImage,
-    preview: preview
+    preview: preview,
+    findTemplate: findTemplate
 };

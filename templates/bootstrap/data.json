@@ -55,8 +55,8 @@
             {
                 "title": "UI/UX Designer",
                 "company_name": "IronSketch",
-                "from_year": "2008",
-                "to_year": "2015",
+                "from": "2023-05-02",
+                "to": "2023-05-02",
                 "responsibility": [
                     {"name": "Validate CSS"},
                     {"name": "Project Management"}
@@ -65,8 +65,8 @@
             {
                 "title": "UI/UX Designer",
                 "company_name": "IronSketch",
-                "from_year": "2008",
-                "to_year": "2015",
+                "from": "2023-05-02",
+                "to": "2023-05-02",
                 "responsibility": [
                     {"name": "Validate CSS"},
                     {"name": "Project Management"}
@@ -75,8 +75,8 @@
             {
                 "title": "UI/UX Designer",
                 "company_name": "IronSketch",
-                "from_year": "2008",
-                "to_year": "2015",
+                "from": "2023-05-02",
+                "to": "2023-05-02",
                 "responsibility": [
                     {"name": "Validate CSS"},
                     {"name": "Project Management"}
@@ -284,21 +284,21 @@
                     "value": ""
                 },
                 {
-                    "label": "From(year)",
-                    "name": "from_year",
-                    "type": "number",
-                    "min": "1900",
-                    "max": "3999",
-                    "step": "1",
+                    "label": "From",
+                    "name": "from",
+                    "type": "date",
                     "value": ""
                 },
                 {
-                    "label": "To(year)",
-                    "name": "to_year",
-                    "type": "number",
-                    "min": "1900",
-                    "max": "3999",
-                    "step": "1",
+                    "label": "To",
+                    "name": "to",
+                    "type": "date",
+                    "value": ""
+                },
+                {
+                    "label": "Employed",
+                    "name": "employed",
+                    "type": "checkbox",
                     "value": ""
                 },
                 {

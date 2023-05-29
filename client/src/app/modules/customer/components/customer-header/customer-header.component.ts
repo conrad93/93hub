@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Customer } from 'src/app/models/customer.model';
 import { CustomerService } from 'src/app/services/customer.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-customer-header',
@@ -9,6 +10,7 @@ import { CustomerService } from 'src/app/services/customer.service';
 })
 export class CustomerHeaderComponent {
 
+  apiUrl = environment.apiUrl;
   customer: Customer | null = null;
 
   constructor(private customerService: CustomerService){

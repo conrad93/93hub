@@ -193,7 +193,37 @@ export class CustomerTemplateFormComponent {
   }
 
   onSubmit(){
-
+    this.isLoading = true;
+    this.baseService.post('/api/customer/update/' + this.customer?._id, this.templateForm, {"c_token": this.customer?.token}).subscribe({
+      next: (res: any) => {
+        if(res["status"]){
+          this.toastService.show({
+            message:res["message"], 
+            class:"border-green-800 text-green-800 dark:text-green-400", 
+            timeout: 3000
+          });
+        } else {
+          this.toastService.show({
+            message:res["message"], 
+            class:"border-red-800 text-red-800 dark:text-red-400", 
+            timeout: 3000
+          });
+        }
+        this.isLoading = false;
+      },
+      error: (err) => {
+        if(err["error"] && !err["error"]["status"]){
+          this.toastService.show({
+            message: err["error"]["message"] ? err["error"]["message"] : "API failure.", 
+            class:"border-red-800 text-red-800 dark:text-red-400", 
+            timeout: 3000
+          });
+        }
+        this.isLoading = false;
+        console.error(err);
+      },
+      complete: () => console.info('complete')
+    });
   }
 
   hideModal(){

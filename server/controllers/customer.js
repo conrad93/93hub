@@ -48,6 +48,18 @@ const signup = async function(req,res) {
     }
 };
 
+const update = async function(req,res) {
+    try {
+        let data = req.body;
+        let id = req.params.id;
+        let response = await CustomerService.updateById(id, data);
+        res.status(200).send(response);
+      } catch (error) {
+        console.log(error);
+        res.status(500).send({status:false, message:error.message, error:error});
+    }
+};
+
 const verify = async function(req,res) {
     let token = req.headers.c_token;
     if(token){
@@ -70,5 +82,6 @@ const verify = async function(req,res) {
 module.exports = {
     signin: signin,
     signup: signup,
-    verify: verify
+    verify: verify,
+    update: update
 };

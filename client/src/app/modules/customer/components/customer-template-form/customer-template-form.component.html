@@ -67,7 +67,7 @@
                     <ng-container *ngIf="templateForm[field.name]">
                         <figure class="relative w-full">
                             <img *ngIf="field.fileType === 'image'" class="rounded-lg w-full h-28" src="{{templateForm[field.name]}}" alt="{{field.label}}">
-                            <img *ngIf="field.fileType === 'pdf'" class="rounded-lg w-full h-28" src="{{templateForm[field.name]}}" alt="{{field.label}}">
+                            <img *ngIf="field.fileType === 'pdf'" class="rounded-lg w-full h-28" src="assets/images/pdf.svg" alt="{{field.label}}">
                             <figcaption class="absolute -top-2 -left-2">
                                 <button (click)="removeFile(field.name)" type="button" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-bold p-1 rounded-full text-xs text-center inline-flex items-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
                                     <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">

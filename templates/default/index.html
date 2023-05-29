@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="John Doe">
+    <title>John Doe</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        a {
+            text-decoration: none;
+        }
+        .d-flex {
+            display: flex;
+        }
+        .justify-content-center {
+            justify-content: center;
+        }
+        .align-items-center {
+            align-items: center;
+        }
+        .flex-column {
+            flex-direction: column;
+        }
+        .p-3 {
+            padding: 1rem;
+        }
+        .px-4 {
+            padding-left: 1.25rem;
+            padding-right: 1.25rem;
+        }
+        .py-2 {
+            padding-top: 0.50rem;
+            padding-bottom: 0.50rem;
+        }
+        .rounded{
+            border-radius: 20px;
+        }
+        .ms-1 {
+            margin-left: 0.25rem;
+        }
+        .container {
+            width: 100%;
+            height: 100%;
+        }
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            min-width: 200px;
+            min-height: 200px;
+            border-radius: 20px;
+        }
+        .btn {
+            color: #ffffff;
+            background-color: #30A2FF;
+        }
+        .btn:hover {
+            background-color: #00C4FF;
+        }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="p-3">
+        <div class="container d-flex justify-content-center align-items-center">
+            <div class="card d-flex justify-content-center align-items-center flex-column p-3">
+                <h2>John Doe</h2>
+                <a class="btn d-flex justify-content-center align-items-center px-4 py-2 rounded" href="mailto:john.doe@example.com">
+                    Get In Touch
+                    <svg class="ms-1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
+                        <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+      </section>
+      <footer class="d-flex justify-content-center align-items-center p-3">
+        <b>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-c-circle" viewBox="0 0 16 16">
+            <path d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8Zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0ZM8.146 4.992c-1.212 0-1.927.92-1.927 2.502v1.06c0 1.571.703 2.462 1.927 2.462.979 0 1.641-.586 1.729-1.418h1.295v.093c-.1 1.448-1.354 2.467-3.03 2.467-2.091 0-3.269-1.336-3.269-3.603V7.482c0-2.261 1.201-3.638 3.27-3.638 1.681 0 2.935 1.054 3.029 2.572v.088H9.875c-.088-.879-.768-1.512-1.729-1.512Z"/>
+          </svg>
+          &nbsp;2023 Copyright: 93hub.com
+        </b>
+      </footer>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+{
+    "preview": {
+        "first_name": "John",
+        "last_name": "Doe",
+        "email": "john.doe@example.com"
+    },
+    "form": [
+        {
+            "label": "First Name",
+            "name": "first_name",
+            "type": "string",
+            "value": ""
+        },
+        {
+            "label": "Last Name",
+            "name": "last_name",
+            "type": "string",
+            "value": ""
+        },
+        {
+            "label": "Email",
+            "name": "email",
+            "type": "email",
+            "value": ""
+        }
+    ]
+}

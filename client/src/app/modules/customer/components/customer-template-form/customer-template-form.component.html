@@ -47,7 +47,7 @@
                 <div class="p-5 text-lg font-semibold text-left text-gray-900 bg-white dark:text-white dark:bg-gray-800">
                     {{field.label}}
                 </div> 
-                <ng-container *ngTemplateOutlet="arrayTemplate; context: { field: field }"></ng-container>
+                <ng-container *ngTemplateOutlet="arrayTemplate; context: { field: field, family: templateForm[field.name] }"></ng-container>
             </div>
         </ng-container>
         <ng-container *ngSwitchCase="'object'">
@@ -128,7 +128,7 @@
     </div>
 </ng-container>
 
-<ng-template #arrayTemplate let-field="field">
+<ng-template #arrayTemplate let-field="field" let-family="family">
     <div class="relative overflow-x-auto">
         <table class="w-full text-center text-sm text-gray-500 dark:text-gray-400">           
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -137,26 +137,28 @@
                         {{child.label}}
                     </th>
                     <th scope="col" class="border px-6 py-3 dark:border-gray-700">
-                        <button (click)="addRow(field.name)" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm p-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">+</button>
+                        <button (click)="addRow(family,field.child)" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm p-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">+</button>
                     </th>
                 </tr>
             </thead>
             <tbody>
-                <tr class="bg-white dark:bg-gray-800" *ngFor="let data of templateForm[field.name]; let i = index;">
-                    <td class="border px-6 py-4 dark:border-gray-700" *ngFor="let child of field.child">
+                <tr class="bg-white dark:bg-gray-800" *ngFor="let data of family; let i = index;">
+                    <td class="border px-2 py-1 dark:border-gray-700" *ngFor="let child of field.child">
                         <ng-container [ngSwitch]="child.type">
-                            <input *ngSwitchCase="'string'" type="text" [maxlength]="child.max" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="" [(ngModel)]="data[child.name]">
-                            <input *ngSwitchCase="'number'" type="number" [min]="child.min" [max]="child.max" [step]="child.step" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="" [(ngModel)]="data[child.name]">
-                            <textarea *ngSwitchCase="'textarea'" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="" [(ngModel)]="data[child.name]"></textarea>
-                            <input *ngSwitchCase="'date'" type="date" name="{{field.name}}" id="{{field.name}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="" [(ngModel)]="data[child.name]">
-                            <input *ngSwitchCase="'checkbox'" type="checkbox" name="{{field.name}}" id="{{field.name}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" [(ngModel)]="data[child.name]">
-                            <ng-container *ngSwitchCase="'array'">
-                                <ng-container *ngTemplateOutlet="arrayTemplate; context: { field: child }"></ng-container>
-                            </ng-container>
+                            <div class="w-full flex items-center justify-center">
+                                <input *ngSwitchCase="'string'" type="text" [maxlength]="child.max" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-36 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="" [(ngModel)]="data[child.name]">
+                                <input *ngSwitchCase="'number'" type="number" [min]="child.min" [max]="child.max" [step]="child.step" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-36 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="" [(ngModel)]="data[child.name]">
+                                <textarea *ngSwitchCase="'textarea'" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-36 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="" [(ngModel)]="data[child.name]"></textarea>
+                                <input *ngSwitchCase="'date'" type="date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="" [(ngModel)]="data[child.name]">
+                                <input *ngSwitchCase="'checkbox'" type="checkbox" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" [(ngModel)]="data[child.name]">
+                                <ng-container *ngSwitchCase="'array'">
+                                    <ng-container *ngTemplateOutlet="arrayTemplate; context: { field: child, family: data[child.name] }"></ng-container>
+                                </ng-container>
+                            </div>
                         </ng-container>
                     </td>
                     <td class="border px-6 py-4 dark:border-gray-700">
-                        <button (click)="removeRow(field.name, i)" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm p-2 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800">-</button>
+                        <button (click)="removeRow(family, i)" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm p-2 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800">-</button>
                     </td>
                 </tr>
             </tbody>

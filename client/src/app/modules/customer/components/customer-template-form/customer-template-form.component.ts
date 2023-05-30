@@ -135,13 +135,25 @@ export class CustomerTemplateFormComponent {
     }
   }
 
-  addRow(name: string){
-    this.templateForm[name] = this.templateForm[name] ? this.templateForm[name] : [];
-    this.templateForm[name].push({});
+  addRow(family: any, data: any){
+    family = family ? family : [];
+    if(data){
+      let obj: any = {};
+      data.forEach((element: any) => {
+        if(element.type === 'array'){
+          obj[element.name] = [];
+        } else if(element.type === 'object') {
+          obj[element.name] = {};
+        } else {
+          obj[element.name] = '';
+        }
+      });
+      family.push(obj);
+    }
   }
 
-  removeRow(name: string, idx: number){
-    this.templateForm[name].splice(idx, 1);
+  removeRow(family: any, idx: number){
+    family.splice(idx, 1);
   }
 
   removeFile(name: string){

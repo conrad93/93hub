@@ -15,7 +15,8 @@ const getSite = async function(req,res) {
                 data = await TemplateService.findTemplate({code: 'default'}, {template: 1, details: 1});
             }
             if(data){
-                template = TemplateService.getTemplate(data.template, {data: customer.data});
+                let templateData = {host: config.host, folderPath: config.folderPath, ...customer.data};
+                template = TemplateService.getTemplate(data.template, {data: templateData});
             } else {
                 template = "Template not found.";
             }

@@ -22,6 +22,7 @@ export class Customer {
     public github_link: string;
     public linkedin_link: string;
     public profile_pic: string;
+    public about_me: string;
     public resume: string;
     public skills_array: any[];
     public education_array: any[];
@@ -50,6 +51,7 @@ export class Customer {
         github_link: string,
         linkedin_link: string,
         profile_pic: string,
+        about_me: string,
         resume: string,
         skills_array: any[],
         education_array: any[],
@@ -78,6 +80,7 @@ export class Customer {
         this.github_link = github_link;
         this.linkedin_link = linkedin_link;
         this.profile_pic = profile_pic;
+        this.about_me = about_me;
         this.resume = resume;
         this.skills_array = skills_array;
         this.education_array = education_array;

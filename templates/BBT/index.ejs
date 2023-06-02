@@ -113,7 +113,7 @@
               <% } %>          
             </div>
             <div class="col-md-6 pt-3 d-none d-md-flex justify-content-center align-items-center">
-              <img style="height: 175px; width: 160px;" src="<%= data.profile_pic %>" class="img-thumbnail shadow-lg" alt="<%= data.first_name %> <%= data.last_name %>">
+              <img style="height: 175px; width: 160px;" src="<%= data.profile_pic ? (data.profile_pic.includes('http') ? data.profile_pic : (data.host + data.folderPath + data.profile_pic)) : '' %>" class="img-thumbnail shadow-lg" alt="<%= data.first_name %> <%= data.last_name %>">
             </div>
           </div>
         </div>
@@ -134,7 +134,7 @@
                 </ul>
               <% } %>
               <% if(data.resume){ %>
-                <a class="btn btn-primary" href="<%= data.resume %>" role="button" download>
+                <a class="btn btn-primary" href="<%= data.resume.includes('http') ? data.resume : (data.host + data.folderPath + data.resume) %>" role="button" download>
                   Download CV
                 </a>
               <% } %>

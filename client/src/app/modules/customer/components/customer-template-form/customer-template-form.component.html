@@ -66,7 +66,7 @@
                     <input *ngIf="!templateForm[field.name]" [accept]="field.accept" type="file" name="{{field.name}}" id="{{field.name}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="" (change)="onFileChange($event, field.name)">
                     <ng-container *ngIf="templateForm[field.name]">
                         <figure class="relative w-full">
-                            <img *ngIf="field.fileType === 'image'" class="rounded-lg w-full h-28" src="{{templateForm[field.name]}}" alt="{{field.label}}">
+                            <img *ngIf="field.fileType === 'image'" class="rounded-lg w-full h-28" src="{{apiUrl + '/api/file/show/' + this.customer?.username + '/' + templateForm[field.name]}}" alt="{{field.label}}">
                             <img *ngIf="field.fileType === 'pdf'" class="rounded-lg w-full h-28" src="assets/images/pdf.svg" alt="{{field.label}}">
                             <figcaption class="absolute -top-2 -left-2">
                                 <button (click)="removeFile(field.name)" type="button" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-bold p-1 rounded-full text-xs text-center inline-flex items-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
@@ -87,9 +87,16 @@
                 <input *ngSwitchCase="'number'" type="number" [min]="field.min" [max]="field.max" [step]="field.step" name="{{field.name}}" id="{{field.name}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="" [(ngModel)]="templateForm[field.name]">
                 <select *ngSwitchCase="'select'" id="{{field.name}}" name="{{field.name}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" [(ngModel)]="templateForm[field.name]">
                     <option [ngValue]="" disabled>-Select-</option>
-                    <ng-container *ngIf="dropDownData[field.optionArrayName] && dropDownData[field.optionArrayName].length">
-                        <option *ngFor="let op of dropDownData[field.optionArrayName];" [ngValue]="op[field.optionCode]">{{op[field.optionName]}}</option>
+                    <ng-container *ngIf="field.hasOption; else noOption;">
+                        <ng-container *ngIf="field.options && field.options.length">
+                            <option *ngFor="let op of field.options;" [ngValue]="op['code']">{{op['name']}}</option>
+                        </ng-container>
                     </ng-container>
+                    <ng-template #noOption>
+                        <ng-container *ngIf="dropDownData[field.optionArrayName] && dropDownData[field.optionArrayName].length">
+                            <option *ngFor="let op of dropDownData[field.optionArrayName];" [ngValue]="op[field.optionCode]">{{op[field.optionName]}}</option>
+                        </ng-container>
+                    </ng-template>
                 </select>
                 <textarea *ngSwitchCase="'textarea'" name="{{field.name}}" id="{{field.name}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="" [(ngModel)]="templateForm[field.name]"></textarea>
                 <input *ngSwitchDefault type="text" name="{{field.name}}" id="{{field.name}}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="" [(ngModel)]="templateForm[field.name]">

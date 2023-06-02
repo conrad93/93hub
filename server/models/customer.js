@@ -23,6 +23,7 @@ const customerSchema = new mongoose.Schema({
     github_link: {type: String},
     linkedin_link: {type: String},
     profile_pic: {type: String},
+    about_me: {type: String},
     resume: {type: String},
     skills_array: {type: Array},
     education_array: {type: Array},

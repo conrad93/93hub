@@ -1,6 +1,7 @@
 const Template = require("../models/template");
 const ejs = require("ejs");
 const FileService = require("./file");
+const config = require("../config/config").get(process.env.NODE_ENV);
 
 const list = async function(data) {
     try {
@@ -64,6 +65,7 @@ const preview = async function(code, body, callback){
         let data = await Template.findOne({code: code}, {template: 1, details: 1}).lean();
         if(data){
             let templateData = body ? body : JSON.parse(data.details).preview;
+            templateData = {host: config.host, folderPath: config.folderPath, ...templateData};
             let template = getTemplate(data.template, {data: templateData});
             return callback({status: 200, contentType: 'text/html', data: template});
         } else {

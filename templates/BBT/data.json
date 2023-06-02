@@ -1,0 +1,345 @@
+{
+    "preview": {
+        "host": "http://localhost:8000",
+        "folderPath": "/api/file/show/",
+        "template_data": {
+            "meta_description": "This is a resume page.",
+            "page_title": "John Doe - Resume"
+        },
+        "first_name": "John",
+        "last_name": "Doe",
+        "title": "Web Developer",
+        "email": "john.doe@example.com",
+        "isd": "1",
+        "phone_no": "9898989898",
+        "address": "6th street",
+        "city": "Austin",
+        "country": "USA",
+        "facebook_link": "https://www.facebook.com",
+        "twitter_link": "https://www.twitter.com",
+        "github_link": "https://www.github.com",
+        "linkedin_link": "https://www.linkedin.com",
+        "profile_pic": "http://localhost:8000/static/images/avatars/boy-1.svg",
+        "about_me": "Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus.",
+        "skills_array": [
+            {"name": "HTML"}, 
+            {"name": "CSS"}, 
+            {"name": "JS"}, 
+            {"name": "PHP"}, 
+            {"name": "Python"}, 
+            {"name": "Angular"}
+        ],
+        "resume": "http://localhost:8000/uploads/:username",
+        "education_array": [
+            {
+                "course_name": "Art & Multimedia",
+                "institute_name": "Oxford University",
+                "from_year": "2008",
+                "to_year": "2015",
+                "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum"
+            }, 
+            {
+                "course_name": "Art & Multimedia",
+                "institute_name": "Oxford University",
+                "from_year": "2008",
+                "to_year": "2015",
+                "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum"
+            }, 
+            {
+                "course_name": "Art & Multimedia",
+                "institute_name": "Oxford University",
+                "from_year": "2008",
+                "to_year": "2015",
+                "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum"
+            }
+        ],
+        "experience_array": [
+            {
+                "title": "UI/UX Designer",
+                "company_name": "IronSketch",
+                "from": "2023-05-02",
+                "to": "2023-05-02",
+                "responsibility": [
+                    {"name": "Validate CSS"},
+                    {"name": "Project Management"}
+                ]
+            }, 
+            {
+                "title": "UI/UX Designer",
+                "company_name": "IronSketch",
+                "from": "2023-05-02",
+                "to": "2023-05-02",
+                "responsibility": [
+                    {"name": "Validate CSS"},
+                    {"name": "Project Management"}
+                ]
+            }, 
+            {
+                "title": "UI/UX Designer",
+                "company_name": "IronSketch",
+                "from": "2023-05-02",
+                "to": "2023-05-02",
+                "responsibility": [
+                    {"name": "Validate CSS"},
+                    {"name": "Project Management"}
+                ]
+            }
+        ]
+    },
+    "form": [
+        {
+            "label": "First Name",
+            "name": "first_name",
+            "type": "string",
+            "value": ""
+        },
+        {
+            "label": "Last Name",
+            "name": "last_name",
+            "type": "string",
+            "value": ""
+        },
+        {
+            "label": "Title",
+            "name": "title",
+            "type": "string",
+            "value": ""
+        },
+        {
+            "label": "Email",
+            "name": "email",
+            "type": "email",
+            "value": ""
+        },
+        {
+            "label": "ISD",
+            "name": "isd",
+            "type": "select",
+            "value": "",
+            "optionArrayName": "countryData",
+            "optionCode": "isd",
+            "optionName": "isd"
+        },
+        {
+            "label": "Phone No.",
+            "name": "phone_no",
+            "type": "tel",
+            "value": ""
+        },
+        {
+            "label": "Address",
+            "name": "address",
+            "type": "textarea",
+            "value": ""
+        },
+        {
+            "label": "City",
+            "name": "city",
+            "type": "select",
+            "value": "",
+            "optionArrayName": "cityData",
+            "optionCode": "name",
+            "optionName": "name"
+        },
+        {
+            "label": "Country",
+            "name": "country",
+            "type": "select",
+            "value": "",
+            "optionArrayName": "countryData",
+            "optionCode": "name",
+            "optionName": "name"
+        },
+        {
+            "label": "Facebook Link",
+            "name": "facebook_link",
+            "type": "url",
+            "value": ""
+        },
+        {
+            "label": "Twitter Link",
+            "name": "twitter_link",
+            "type": "url",
+            "value": ""
+        },
+        {
+            "label": "Github Link",
+            "name": "github_link",
+            "type": "url",
+            "value": ""
+        },
+        {
+            "label": "Linkedin Link",
+            "name": "linkedin_link",
+            "type": "url",
+            "value": ""
+        },
+        {
+            "label": "Profile Picture",
+            "name": "profile_pic",
+            "type": "file",
+            "fileType": "image",
+            "accept": "image/*",
+            "value": ""
+        },
+        {
+            "label": "Resume",
+            "name": "resume",
+            "type": "file",
+            "fileType": "pdf",
+            "accept": "application/pdf",
+            "value": ""
+        },
+        {
+            "label": "About me",
+            "name": "about_me",
+            "type": "textarea",
+            "value": ""
+        },
+        {
+            "label": "Skills",
+            "name": "skills_array",
+            "type": "array",
+            "value": "",
+            "fields": {"name": ""},
+            "hasChild": true,
+            "isAddable": true,
+            "child": [
+                {
+                    "label": "Name",
+                    "name": "name",
+                    "type": "string",
+                    "value": ""
+                }
+            ]
+        },
+        {
+            "label": "Education",
+            "name": "education_array",
+            "type": "array",
+            "value": "",
+            "fields": {"course_name": "", "institute_name": "", "from_year": "", "to_year": "", "description": ""},
+            "hasChild": true,
+            "isAddable": true,
+            "child": [
+                {
+                    "label": "Course Name",
+                    "name": "course_name",
+                    "type": "string",
+                    "value": ""
+                },
+                {
+                    "label": "Institute Name",
+                    "name": "institute_name",
+                    "type": "string",
+                    "value": ""
+                },
+                {
+                    "label": "From(year)",
+                    "name": "from_year",
+                    "type": "number",
+                    "min": "1900",
+                    "max": "3999",
+                    "step": "1",
+                    "value": ""
+                },
+                {
+                    "label": "To(year)",
+                    "name": "to_year",
+                    "type": "number",
+                    "min": "1900",
+                    "max": "3999",
+                    "step": "1",
+                    "value": ""
+                },
+                {
+                    "label": "Description",
+                    "name": "description",
+                    "type": "textarea",
+                    "value": ""
+                }
+            ]
+        },
+        {
+            "label": "Experience",
+            "name": "experience_array",
+            "type": "array",
+            "value": "",
+            "fields": {"title": "", "company_name": "", "from_year": "", "to_year": "", "responsibility": []},
+            "hasChild": true,
+            "isAddable": true,
+            "child": [
+                {
+                    "label": "Title",
+                    "name": "title",
+                    "type": "string",
+                    "value": ""
+                },
+                {
+                    "label": "Company Name",
+                    "name": "company_name",
+                    "type": "string",
+                    "value": ""
+                },
+                {
+                    "label": "From",
+                    "name": "from",
+                    "type": "date",
+                    "value": ""
+                },
+                {
+                    "label": "To",
+                    "name": "to",
+                    "type": "date",
+                    "value": ""
+                },
+                {
+                    "label": "Employed",
+                    "name": "employed",
+                    "type": "checkbox",
+                    "value": ""
+                },
+                {
+                    "label": "Responsibility",
+                    "name": "responsibility",
+                    "type": "array",
+                    "value": "",
+                    "fields": {"name": ""},
+                    "hasChild": true,
+                    "isAddable": true,
+                    "child": [
+                        {
+                            "label": "Name",
+                            "name": "name",
+                            "type": "string",
+                            "value": ""
+                        }
+                    ]
+                } 
+            ]
+        },
+        {
+            "label": "Template Data",
+            "name": "template_data",
+            "type": "object",
+            "value": "",
+            "hasChild": true,
+            "isAddable": false,
+            "child": [
+                {
+                    "label": "Page Title",
+                    "name": "page_title",
+                    "type": "string",
+                    "value": ""
+                },
+                {
+                    "label": "Page Description",
+                    "name": "meta_description",
+                    "type": "string",
+                    "value": "",
+                    "max": 160
+                }
+            ]
+        }
+    ]
+}

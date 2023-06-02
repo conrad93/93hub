@@ -1,5 +1,7 @@
 {
     "preview": {
+        "host": "http://localhost:8000",
+        "folderPath": "/api/file/show/",
         "template_data": {
             "meta_description": "This is a resume page.",
             "page_title": "John Doe - Resume"
@@ -7,17 +9,12 @@
         "first_name": "John",
         "last_name": "Doe",
         "title": "Web Developer",
+        "gender": "m",
         "email": "john.doe@example.com",
-        "isd": "1",
-        "phone_no": "9898989898",
-        "address": "6th street",
-        "city": "Austin",
-        "country": "USA",
         "facebook_link": "https://www.facebook.com",
         "twitter_link": "https://www.twitter.com",
         "github_link": "https://www.github.com",
         "linkedin_link": "https://www.linkedin.com",
-        "profile_pic": "http://localhost:8000/static/images/avatars/boy-1.svg",
         "about_me": "Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus.",
         "skills_array": [
             {"name": "HTML"}, 
@@ -27,7 +24,6 @@
             {"name": "Python"}, 
             {"name": "Angular"}
         ],
-        "resume": "http://localhost:8000/static/uploads/:username",
         "education_array": [
             {
                 "course_name": "Art & Multimedia",
@@ -104,49 +100,31 @@
             "value": ""
         },
         {
+            "label": "Gender",
+            "name": "gender",
+            "type": "select",
+            "value": "",
+            "hasOption": true,
+            "options": [
+                {
+                    "name": "Male",
+                    "code": "m"
+                },
+                {
+                    "name": "Female",
+                    "code": "f"
+                },
+                {
+                    "name": "Others",
+                    "code": "o"
+                }
+            ]
+        },
+        {
             "label": "Email",
             "name": "email",
             "type": "email",
             "value": ""
-        },
-        {
-            "label": "ISD",
-            "name": "isd",
-            "type": "select",
-            "value": "",
-            "optionArrayName": "countryData",
-            "optionCode": "isd",
-            "optionName": "isd"
-        },
-        {
-            "label": "Phone No.",
-            "name": "phone_no",
-            "type": "tel",
-            "value": ""
-        },
-        {
-            "label": "Address",
-            "name": "address",
-            "type": "textarea",
-            "value": ""
-        },
-        {
-            "label": "City",
-            "name": "city",
-            "type": "select",
-            "value": "",
-            "optionArrayName": "cityData",
-            "optionCode": "name",
-            "optionName": "name"
-        },
-        {
-            "label": "Country",
-            "name": "country",
-            "type": "select",
-            "value": "",
-            "optionArrayName": "countryData",
-            "optionCode": "name",
-            "optionName": "name"
         },
         {
             "label": "Facebook Link",
@@ -173,27 +151,7 @@
             "value": ""
         },
         {
-            "label": "Profile Picture",
-            "name": "profile_pic",
-            "type": "file",
-            "fileType": "image",
-            "accept": "image/*",
-            "value": "",
-            "folder": "username",
-            "path": "http://localhost:8000/static/uploads/images"
-        },
-        {
-            "label": "Resume",
-            "name": "resume",
-            "type": "file",
-            "fileType": "pdf",
-            "accept": "application/pdf",
-            "value": "",
-            "folder": "username",
-            "path": "http://localhost:8000/static/uploads/pdf"
-        },
-        {
-            "label": "About me",
+            "label": "About",
             "name": "about_me",
             "type": "textarea",
             "value": ""

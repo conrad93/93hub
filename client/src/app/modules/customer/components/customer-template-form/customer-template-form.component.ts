@@ -174,7 +174,7 @@ export class CustomerTemplateFormComponent {
               class:"border-green-800 text-green-800 dark:text-green-400", 
               timeout: 3000
             });
-            this.templateForm[name] = this.apiUrl + "/api/file/show/" + this.customer?.username + "/" + res["name"];
+            this.templateForm[name] = this.customer?.username + "/" + res["name"];
           } else {
             this.toastService.show({
               message:res["message"], 

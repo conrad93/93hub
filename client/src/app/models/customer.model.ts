@@ -7,6 +7,7 @@ export class Customer {
     public status: number;
     public email: string;
     public isd: string;
+    public gender: string;
     public phone_no: string;
     public address: string;
     public city: string;
@@ -36,6 +37,7 @@ export class Customer {
         status: number, 
         email: string, 
         isd: string, 
+        gender: string, 
         phone_no: string, 
         address: string, 
         city: string, 
@@ -85,5 +87,6 @@ export class Customer {
         this.skills_array = skills_array;
         this.education_array = education_array;
         this.experience_array = experience_array;
+        this.gender = gender;
     }
 }

@@ -9,6 +9,7 @@ const customerSchema = new mongoose.Schema({
     status: {type: Number, default: 1},
     email: {type: String},
     isd: {type: String},
+    gender: {type: String},
     phone_no: {type: String},
     address: {type: String},
     city: {type: String},

@@ -44,7 +44,7 @@
                     </ng-template>
                 </button>
                 <div class="flex items-center justify-center">
-                    <a href="#" class="text-sm text-blue-700 hover:underline dark:text-blue-500">Reset Password.</a>
+                    <!-- <a href="#" class="text-sm text-blue-700 hover:underline dark:text-blue-500">Reset Password.</a> -->
                 </div>
             </form>
             <form *ngIf="!isEmployee" class="space-y-6" [formGroup]="customerForm" (ngSubmit)="onCustomerSubmit()">
@@ -71,7 +71,7 @@
                     </ng-template>
                 </button>
                 <div class="flex items-center justify-center flex-col">
-                    <a href="#" class="text-sm text-blue-700 hover:underline dark:text-blue-500 mb-1">Reset Password.</a>
+                    <!-- <a href="#" class="text-sm text-blue-700 hover:underline dark:text-blue-500 mb-1">Reset Password.</a> -->
                     <a routerLink="/sign-up" class="text-sm text-blue-700 hover:underline dark:text-blue-500">New, Sign-up.</a>
                 </div>
             </form>

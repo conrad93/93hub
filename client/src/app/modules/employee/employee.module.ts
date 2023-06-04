@@ -18,6 +18,7 @@ import { CategoryListComponent } from './components/category-list/category-list.
 import { CategoryFormComponent } from './components/category-form/category-form.component';
 import { TemplateFormComponent } from './components/template-form/template-form.component';
 import { TemplateListComponent } from './components/template-list/template-list.component';
+import { EmployeeSettingsComponent } from './components/employee-settings/employee-settings.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { TemplateListComponent } from './components/template-list/template-list.
     CategoryListComponent,
     CategoryFormComponent,
     TemplateFormComponent,
-    TemplateListComponent
+    TemplateListComponent,
+    EmployeeSettingsComponent
   ],
   imports: [
     CommonModule,

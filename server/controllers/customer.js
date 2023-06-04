@@ -60,6 +60,23 @@ const update = async function(req,res) {
     }
 };
 
+const updatePassword = async function(req,res) {
+    try {
+        let password = req.body.password;
+        let id = req.body.id;
+        if(password && id){
+            password = await bcrypt.hash(password, config.saltRounds);
+            let response = await CustomerService.updateById(id, {password: password});
+            res.status(200).send(response);
+        } else {
+            res.status(500).send({status:false, message: "Invalid request."});
+        }
+      } catch (error) {
+        console.log(error);
+        res.status(500).send({status:false, message:error.message, error:error});
+    }
+};
+
 const verify = async function(req,res) {
     let token = req.headers.c_token;
     if(token){
@@ -83,5 +100,6 @@ module.exports = {
     signin: signin,
     signup: signup,
     verify: verify,
-    update: update
+    update: update,
+    updatePassword: updatePassword
 };

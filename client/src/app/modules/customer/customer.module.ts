@@ -7,6 +7,7 @@ import { CustomerHomeComponent } from './components/customer-home/customer-home.
 import { CustomerHeaderComponent } from './components/customer-header/customer-header.component';
 import { CustomerTemplateListComponent } from './components/customer-template-list/customer-template-list.component';
 import { CustomerTemplateFormComponent } from './components/customer-template-form/customer-template-form.component';
+import { CustomerSettingsComponent } from './components/customer-settings/customer-settings.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { CustomerTemplateFormComponent } from './components/customer-template-fo
     CustomerHomeComponent,
     CustomerHeaderComponent,
     CustomerTemplateListComponent,
-    CustomerTemplateFormComponent
+    CustomerTemplateFormComponent,
+    CustomerSettingsComponent
   ],
   imports: [
     CommonModule,

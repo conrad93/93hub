@@ -26,7 +26,7 @@ const signin = async function(req,res) {
                 res.status(200).send({status:false, message:"Incorrect password."});
             }
         } else {
-            res.status(200).send({status:false, message:"Email does not exist."});
+            res.status(200).send({status:false, message:"Username does not exist."});
         }
       } catch (error) {
         console.log(error);

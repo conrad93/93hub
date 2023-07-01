@@ -4,6 +4,7 @@ import { CustomerComponent } from './components/customer/customer.component';
 import { CustomerHomeComponent } from './components/customer-home/customer-home.component';
 import { CustomerTemplateListComponent } from './components/customer-template-list/customer-template-list.component';
 import { CustomerTemplateFormComponent } from './components/customer-template-form/customer-template-form.component';
+import { CustomerSettingsComponent } from './components/customer-settings/customer-settings.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
       {
         path: 'template/:id',
         component: CustomerTemplateFormComponent,
+      },
+      {
+        path: 'settings',
+        component: CustomerSettingsComponent,
       },
       {
         path: '',

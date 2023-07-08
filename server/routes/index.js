@@ -14,9 +14,9 @@ router.use("/api/base", BaseRoute);
 router.use("/api/file", FileRoute);
 router.use("/api/template", TemplateRoute);
 
-router.use("*", (req,res) => {
-    console.log("404: Route not found");
-    res.status(404).send('404: Route not found');
-});
+// router.use("*", (req,res) => {
+//     console.log("404: Route not found");
+//     res.status(404).send('404: Route not found');
+// });
 
 module.exports = router;
